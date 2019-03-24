@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<meta name="applicable-device" content="pc">
+	<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css?v{$version}" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/header.js?v{$version}"></script>
+	<script>var znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div id="main">
+		<div id="hotcontent">
+			<div class="ll">
+				<foreach name="hotlist" item="v">
+				<div class="item">
+					<div class="image">
+						<a href="{$v['rewriteurl']}" title="{$v['title']}"><img {$comset.src}="{$v['thumb']}" alt="{$v['title']}" width="120" height="150" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+					</div>
+					<dl>
+						<dt><span><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span><a href="{$v['rewriteurl']}">{$v['title']}</a></dt>
+						<dd>{$v['description']}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+			</div>
+		</div>
+		{$advcode.list_1.code}
+		<div id="hotcontent">
+			<div class="lll">
+				<h2>{$TDK.webname}小说大全</h2>
+				<ul>
+				<foreach name="articlelist" item="v">
+				<li class="item-cover">
+					<a href="{$v['rewriteurl']}" title="{$v['title']}">
+						<img {$comset.src}="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" />
+						<h3>{$v['title']}</h3>
+					</a>
+				</li>
+				</foreach>
+				</ul>
+				<div class="pages">
+					{$pagehtml}
+				</div>
+			</div>
+		</div>
+		<div class="dvcode">{$advcode.list_2.code}</div>
+	</div>
+	<include file="Public/footer" />
+</div>
+</body>
+</html>

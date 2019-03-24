@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}">
+	<meta name="description" content="{$TDK.description}">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/ptm.min.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/skin.min.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/font-awesome.min.css" />
+</head>
+<body>
+<include file="Public/header" />
+<section class="ptm-content">
+	<include file="Public/nav" />
+	<div class="categories ptm-clearfix">
+		<ul>
+			<li><a href="{$catelist.all}" class="current">全部小说</a></li>
+			<foreach name="category" key="key" item="vo">
+			<li><a href="{$vo['url']}" <if condition="$category[$key]['dir'] eq $cate">class="current"</if>>{$vo['name']}</a></li>
+			</foreach>
+		</ul>
+		<div class="c10"></div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			<div class="ptm-pull-left">
+				本月热门小说
+			</div>
+			<div class="ptm-pull-right">
+				<a href="{$catelist.top}">更多>></a>
+			</div>
+		</div>
+		<div class="ptm-card-content" style="padding:0">
+			<ul class="ptm-list-view ptm-grid-view pt-card-1">
+				<foreach name="hotlist" item="v">
+				<li class="ptm-list-view-cell ptm-img ptm-col-xs-4">
+					<div class="imgarea">
+						<a href="{$v['rewriteurl']}" title="{$v['title']}"><img class="ptm-img-object" {$comset.src}="{$v['thumb']}" alt="{$v['title']}"></a>
+					</div>
+					<div class="ptm-img-body">
+						<span class="ptm-block pt-name ptm-text-cut"><a href="{$v['rewriteurl']}" title="{$v['title']}">{$v['title']}</a></span>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	{$advcode.list_1.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			<div class="ptm-pull-left">
+				全部小说
+			</div>
+			<div class="ptm-pull-right">
+				第{$page}页
+			</div>
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="articlelist" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a> | 分类：<a href="{$v.cateurl}">{$v.catename}</a></div>
+						<div class="pt-desc ptm-text-cut">简介：{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<if condition="$pagehtml != ''">
+		<div class="ptm-card-footer" id="pages">
+			{$pagehtml}
+		</div>
+		</if>
+	</div>
+	{$advcode.list_2.code_wap}
+</section>
+<div class="ptm-line-x"></div>
+<include file="Public/footer" />
+</body>
+</html>

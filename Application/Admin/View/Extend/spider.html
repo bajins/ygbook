@@ -1,0 +1,66 @@
+<script>
+	function changedomain(obj){
+		var type = obj.value;
+		if(type){
+			window.location.href= "{:U('spider', array('domain' => '__string__'))}" . replace('__string__', type);
+		} else {
+			window.location.href= "{:U('spider')}";
+		}
+	}
+</script>
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl">
+		<strong class="am-text-primary am-text-lg">蜘蛛到访记录</strong> / <small><a href="{:U('spider', array('action' => 'clearall'))}" onclick="return checkdel();">清除历史记录</a></small>
+	</div>
+	<div class="am-fr am-form">
+			<select onchange="changedomain(this)">
+				<option value="">全部记录</option>
+				<option value="{$setting.seo.pcdomain}"<if condition="$nowdomain eq $setting['seo']['pcdomain']"> selected</if>>默认站点</option>
+				<option value="{$setting.seo.mobiledomain}"<if condition="$nowdomain eq $setting['seo']['mobiledomain']"> selected</if>>默认手机站</option>
+				<foreach name="sites" item="v1" key="k1">
+				<option value="{$v1.pcdomain}"<if condition="$nowdomain eq $v1['pcdomain']"> selected</if>>{$v1.pcdomain}</option>
+				<option value="{$v1.mobiledomain}"<if condition="$nowdomain eq $v1['mobiledomain']"> selected</if>>{$v1.mobiledomain}</option>
+				</foreach>
+			</select>
+		</div>
+</div>
+<hr>
+<ul class="am-avg-sm-2 am-avg-md-7 am-margin am-padding am-text-center admin-content-list ">
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日到访<br/>{$spider_day}</a></li>
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日百度<br/>{$spider_stat.baidu}</a></li>
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日Google<br/>{$spider_stat.google}</a></li>
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日360<br/>{$spider_stat.360}</a></li>
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日搜狗<br/>{$spider_stat.sogou}</a></li>
+	<li><a class="am-text-success"><span class="am-icon-btn am-icon-bug"></span><br/>今日神马<br/>{$spider_stat.shenma}</a></li>
+	<li><a class="am-text-danger"><span class="am-icon-btn am-icon-bug"></span><br/>昨日到访<br/>{$spider_lastday}</a></li>
+</ul>
+
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+			 <tr>
+					<th class="table-id am-hide-sm-only">ID</th>
+					<th class="table-title am-hide-sm-only">受访页面</th>
+					<th class="table-type">蜘蛛</th>
+					<th class="table-author am-hide-sm-only">蜘蛛IP</th>
+					<th class="table-date">来访时间</th>
+				</tr>
+			</thead>
+			<foreach name="spiderloglist" item="vo">
+			<tr>
+				<td class="am-hide-sm-only">{$vo.id}</td>
+				<td class="am-hide-sm-only"><a href="{$vo.httpurl}" target="_blank">{$vo.httpurl}</a></td>
+				<td>{$vo.spider}</td>
+				<td class="am-hide-sm-only">{$vo.ip} <a href="http://www.ip138.com/ips138.asp?ip={$vo.ip}&action=2" target="_blank" class="am-text-success"><span class="am-icon-search"></span> 查询</a></td>
+				<td>{$vo.dateline|date='Y-m-d H:i',###}</td>
+			</tr>
+			</foreach>
+		</table>
+		<div class="am-cf">
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+	</div>
+</div>

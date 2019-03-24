@@ -1,0 +1,54 @@
+﻿.theme-default .pt-reader,body .theme-default .theme-bg{background:url(../images/default.png);color:#2e343f}.theme-moon .pt-reader{background:url(../images/moon.png)!important;color:#414141!important}.theme-moon .pt-menu .button,.theme-moon .pt-menu a{color:#666!important}.theme-white .pt-reader,body .theme-white .theme-bg{color:#2e343f;background:url(../images/white.png)}.theme-sheepskin .pt-reader,body .theme-sheepskin .bg{color:#453c2e;background:#e9dabe}.theme-purple .pt-reader,body .theme-purple .theme-bg{color:#3c4f62;background:#c7d5e0}.theme-green .pt-reader,body .theme-green .theme-bg{color:#282b29;background:#bed5c5}.theme-pink .pt-reader,body .theme-pink .theme-bg{color:#2e343f;background:#e0b6c4}.pt-menu{display:none;color:#fff;top:0;left:0;z-index:20;width:100%;height:100%;position:absolute;-webkit-box-pack:center;-webkit-box-align:center}.pt-menu a,.pt-menu a:hover{color:#fff}.pt-menu .bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:15;background:rgba(36,36,36,0)}.pt-menu .header,.pt-menu .footer{left:0;right:0;z-index:30;height:44px;line-height:44px;position:absolute;background:rgba(36,36,36,0.9);-webkit-box-shadow:0 0 1px #000;display:-webkit-box}.pt-menu .header{top:0}.pt-menu .footer{bottom:0}.pt-menu .button{display:-webkit-box}.pt-menu .header .back{-webkit-box-flex:1;padding-left:5px}.pt-menu .header i{font-size:20px}.pt-menu .header .button{width:40px;padding-left:5px;-webkit-box-pack:center;-webkit-box-align:center}.pt-menu .header .button.active{color:#1abc9c}.pt-menu .footer .button{display:block;-webkit-box-flex:1;text-align:center}.pt-menu .footer .button i,.pt-menu .footer .button span{line-height:1;width:100%;display:block}.pt-menu .footer .button i{font-size:17px;height:29px;line-height:35px;overflow:hidden}.pt-menu .footer .button span{height:15px;font-size:12px}.pt-menu .footer .button.active{color:#1abc9c}.pt-menu .center .button{color:#fff;z-index:30;font-size:16px;padding:5px;position:absolute;top:45%;-webkit-transform:translateY(-50%);background:rgba(36,36,36,0.9);-webkit-box-shadow:0 0 1px #000}.pt-menu .center .button:nth-child(1){left:0;padding-right:10px}.pt-menu .center .button:nth-child(2){right:0;padding-left:10px}.pt-menu .setting,.pt-menu .change,.pt-menu .cache,.pt-menu .more{width:100%;border-bottom:1px solid #535353;background:rgba(36,36,36,0.9);-webkit-box-shadow:0 0 1px #000;position:absolute;left:0;bottom:44px;z-index:20;display:none}.pt-menu .option .theme-area{display:inline-block;-webkit-border-radius:50%;width:30px;height:30px;border:0;padding:2px;vertical-align:middle}.pt-menu .option .theme-area .ptm-btn{width:26px;height:26px;-webkit-border-radius:50%;vertical-align:top}.pt-menu .option .theme-area.active{width:34px;height:34px;border:2px solid #1abc9c}.pt-menu .ptm-list-view{background:0;height:160px;text-align:center}.pt-menu .ptm-list-view .ptm-list-view-cell{font-size:14px;line-height:40px;padding:0 15px}.pt-menu .ptm-list-view .ptm-list-view-cell>a{margin:0;padding:0}.pt-menu .ptm-list-view .ptm-list-view-cell.active,.pt-menu .ptm-list-view .ptm-list-view-cell.active>a,.pt-menu .ptm-list-view .ptm-list-view-cell:active>a,.pt-menu .ptm-list-view .ptm-list-view-cell.hover>a{color:#1abc9c}.pt-menu .setting .ptm-list-view{height:135px;text-align:left}.pt-menu .setting .ptm-list-view .ptm-list-view-cell{line-height:45px;display:-webkit-box}.pt-menu .setting .ptm-list-view .ptm-list-view-cell .title{width:50px;display:block;text-align:right}.pt-menu .setting .ptm-list-view .ptm-list-view-cell .option{-webkit-box-flex:1}.pt-menu .change .ptm-list-view{height:160px;overflow-y:scroll}.pt-menu .cache .tip{padding:10px;font-size:14px;text-align:center}.pt-menu .ptm-tab-nav.ptm-tab-border{border-color:#000}.pt-menu .ptm-tab-nav.ptm-tab-border li{color:#fff;background-color:#1f2021;border-color:#000}.pt-menu .ptm-tab-nav.ptm-tab-border li.active{background-color:#1abc9c}.pt-menu .more{width:40%;top:44px;right:0;left:auto;bottom:auto;border:0}.pt-menu .more .ptm-list-view{height:100%}.pt-reader.about{overflow-y:hidden;overflow-x:hidden}.pt-reader.menushow{width:100%;height:100%;overflow:hidden}.pt-reader .body{font-size:16px;padding:0;line-height:1.8}.pt-reader .body .content .title{font-weight:bold;text-align:center;padding:10px;font-size:18px;text-indent:0}.pt-reader .body .content{padding:10px;padding-top:0}.pt-reader .body .content.anim{-webkit-transition:-webkit-transform .3s ease-in-out}.pt-reader .body .content p{text-indent:2em}.pt-reader.about .body{position:absolute;top:0;left:0;overflow-x:hidden}.pt-reader .body .aboutheader{display:none;position:absolute;top:0;left:0;padding:0 10px;font-size:14px;height:25px;line-height:25px}.pt-reader.about .body .aboutheader{display:-webkit-box}.pt-reader .body .aboutheader .title{-webkit-box-flex:1;color:#666}.pt-reader .body .aboutheader .page{width:50px;text-align:right;color:#999;font-size:13px}.pt-reader.about .body .content{-webkit-column-gap:15px;padding:30px 15px 0;-webkit-transform:translateZ(0)}.loading{top:0;left:0;width:100%;z-index:10;height:100%;font-size:16px;position:absolute;display:-webkit-box;-webkit-box-pack:center;-webkit-box-align:center}.loading img{height:30px;margin-right:5px}.endline{height:0;width:100%}
+.theme-moon .ptm-bar{
+	background-color: #353535;
+}
+.theme-moon .ptm-btn-primary{
+	background: #353535;
+	border-color: #353535;
+}
+.theme-moon .ptm-btn-primary.ptm-btn-outlined{
+	color: #999;
+	background: transparent;
+}
+.pt-reader{
+	display: block;
+}
+.pt-reader .body .preload{
+	padding: 30px 0;
+	text-align: center;
+}
+.pt-reader .body .preload i{
+	font-size: 24px;
+	text-indent: 0;
+}
+.content_btn .ptm-btn-block{
+	padding: 6px 0;
+	font-size: 14px;
+}
+.content_btn div:first-child a{
+	border-radius: 4px 0 0 4px;
+}
+.content_btn div:nth-child(2) a{
+	border-width: 1px 0;
+	border-radius: 0;
+}
+.content_btn div:last-child a{
+	border-radius: 0 4px 4px 0;
+}
+.aboutfooter{
+	text-align: center;
+	font-size: 14px;
+	color: #999;
+	line-height: 24px;
+	height: 24px;
+}
+.pt-reader .chaptercontent{
+	margin: 15px auto;
+}
+.content_toolbar{
+	margin-top: 10px;
+	font-size: 12px;
+}
+.footer{
+	padding-bottom: 100px;
+}

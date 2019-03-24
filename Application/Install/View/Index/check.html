@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<link href="__PUBLIC__/install/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="wrapper">
+	<div class="logo"><a href="#" target="_blank"><img src="__PUBLIC__/install/logo.png" alt="YGBOOK" title="YGBOOK" /></a></div>
+	<div class="check">
+		<h3>环境监测</h3>
+		<ul>
+			<li>服务器操作系统:	.................................................................{$sys_info.os}</li>
+			<li>Web 服务器:		.................................................................{$sys_info.web_server}</li>
+			<li>PHP 版本:		.................................................................{$sys_info.php_ver}</li>
+			<li>MySQL 版本:		.................................................................{$sys_info.mysql_ver}</li>
+			<li>Socket 支持:	.................................................................{$sys_info.socket}</li>
+			<li>时区设置:		.................................................................{$sys_info.timezone}</li>
+			<li>GD 版本:		.................................................................{$sys_info.gd}</li>
+			<li>Zlib 支持:		.................................................................{$sys_info.zlib}</li>
+		</ul>
+		<h3>目录权限检测</h3>
+		<ul>
+			<foreach name="writeable" item="v">
+			<li>{$v.dir} 		.................................................................{$v.if_write}</li>
+			</foreach>
+		</ul>
+		<p class="action">
+			<input type="button" class="btnGray" value="后退" onclick="location.href='{:U('index/index')}'"/>
+			<if condition="$no_write != ''">
+			<input type="submit" class="btnGray" value="继续" onclick="location.href='{:U('index/setting')}'" disabled="true"/>
+			<else />
+			<input type="submit" class="btn" value="继续" onclick="location.href='{:U('index/setting')}'"/>
+			</if>
+		</p>
+	</div>
+</div>
+</body>
+</html>

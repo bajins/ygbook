@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<meta name="applicable-device" content="pc">
+	<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+	<meta property="og:type" content="novel"/>
+	<meta property="og:title" content="{$articledb.title}"/>
+	<meta property="og:description" content="{$articledb.description}"/>
+	<meta property="og:image" content="{$articledb.thumb}"/>
+	<meta property="og:novel:category" content="{$articledb.catename}"/>
+	<meta property="og:novel:author" content="{$articledb.author}"/>
+	<meta property="og:novel:book_name" content="{$articledb.title}"/>
+	<meta property="og:novel:read_url" content="{$TDK.canonicalurl}"/>
+	<meta property="og:url" content="{:C('PCHOST')}{$articledb.firstchapterurl}"/>
+	<meta property="og:novel:status" content="<if condition="$articledb['full'] eq 0">连载中<else />已完成</if>"/>
+	<meta property="og:novel:update_time" content="{$articledb.time}"/>
+	<meta property="og:novel:latest_chapter_name" content="{$articledb.lastchapter}"/>
+	<meta property="og:novel:latest_chapter_url" content="{:C('PCHOST')}{$articledb.lastchapterurl}"/>
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css?v{$version}" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/header.js?v{$version}"></script>
+	<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+	<script>var bookid = '{$TDK.oid}', hash = '{$TDK.hash}', index_rule = '{:C('ID_RULE')}', cindex_rule = '{:C('CID_RULE')}', znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="dvcode">{$advcode.view_1.code}</div>
+	<div class="box_con">
+		<div class="con_top cf">
+			<span class="bdlikebutton"></span>
+			<div id="bdshare" class="bdsharebuttonbox">
+				<a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+			</div>
+			<a href="{$TDK.weburl}" title="{$TDK.webname}">{$TDK.webname}</a> &gt; <a href="{$TDK.cateurl}" title="{$TDK.webname}{$articledb.catename}">{$articledb.catename}</a> &gt; <a href="{$TDK.canonicalurl}" title="{$articledb.title}">{$articledb.title}最新章节</a>
+		</div>
+		<div id="maininfo">
+			<div id="info">
+				<div class="booktitle cf">
+					<h1>{$articledb.title}</h1>
+					<em>标签：<foreach name="articledb.taglist" item="v2"><a href="{$v2.tagurl}" title="{$articledb.title}标签：{$v2.tagname}">{$v2.tagname} </a></foreach></em>
+				</div>
+				<p>作　　者：<a href="{:reurl('author', $articledb)}" target="_blank" title="{$articledb.author}作品集">{$articledb.author}</a></p>
+				<p>动　　作：加入书架,  <a href="#footer">直达底部</a></p>
+				<p>最后更新：{$articledb.time}</p>
+				<p>最新章节：<a href="{$articledb.lastchapterurl}" target="_blank" title="{$articledb.title}最新章节">{$articledb.lastchapter}</a></p>
+			</div>
+			<div id="intro">
+				{$articledb.content}
+			</div>
+		</div>
+		<div id="sidebar">
+			<div id="fmimg">
+				<img alt="{$articledb.title}" src="{$articledb.thumb}" width="120" height="150" onerror="this.src='__PUBLIC__/images/nocover.jpg'" />
+				<if condition="$articledb['full'] eq 0"><span class="b"></span><else /><span class="a"></span></if>
+			</div>
+		</div>
+		<div id="listtj">推荐阅读：<foreach name="dataarea_list.pc_view_text" item="v"><a href="{$v.rewriteurl}" title="{$TDK.webname}-{$v.title}最新章节">{$v.title}</a>、</foreach><a href="{$TDK.canonicalurl}" title="{$articledb.title}最新章节">{$articledb.title}</a></div>
+	</div>
+	<div class="box_con">
+		<div id="list">
+			<dl>	
+				<dt>《<a href="{$TDK.canonicalurl}" title="{$articledb.title}">{$articledb.title}</a>》最新章节</b><span id="loadingtip">（<img src="__PUBLIC__/{$theme}/images/loading.gif" />提示：正在自动抓取{$articledb.title}最新章节）</span></dt>
+				<div id="newchapter"><foreach name="newchaperlist" item="v2">
+				<dd><a href="{:reurl('chapter', $v2, $maindomain)}" target="_blank" title="{$articledb.title} {$v2.title}">{$v2.title}</a></dd>
+				</foreach></div>
+				{$advcode.view_2.code}
+				<dt>《<a href="{$TDK.canonicalurl}" title="{$articledb.title}">{$articledb.title}</a>》章节列表</dt>
+				<foreach name="chapterdb" item="v3">
+				<dd><a href="{:reurl('chapter', $v3, $maindomain)}" target="_blank" title="{$articledb.title} {$v3.title}">{$v3.title}</a></dd>
+				</foreach>
+			</dl>
+		</div>
+	</div>
+	<script id="bdlike_shell"></script><script>bdlike();</script>
+	<div class="dvcode">{$advcode.view_3.code}</div>
+	<div id="footer" name="footer">
+		<div class="footer_link"></div>
+		<div class="footer_cont">
+			<p>《<a href="{$TDK.canonicalurl}" title="{$TDK.webname}-{$articledb.title}">{$articledb.title}</a>》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的{$articledb.catename}，{$TDK.webname}转载收集<a href="{$TDK.canonicalurl}" title="{$articledb.title}最新章节">{$articledb.title}最新章节</a>、无弹窗阅读。</p>
+			<script type="text/javascript">footer();</script>{$statcode}
+		</div>
+	</div>
+</div>
+<script id="chapterhtml" type="text/html">
+	<dd><a href="{:C('HOME_URL')}{:C('CHAPTER_RULE')}" target="_blank">{title}</a></dd>
+</script>
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+<if condition="$comset.src neq 'src'">
+<script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script>
+$(function() {
+	$('[rel-class=lazyload]').lazyload({effect: "fadeIn"});
+});
+</script>
+</if>
+{$advcode.global_footer.code}
+</body>
+</html>

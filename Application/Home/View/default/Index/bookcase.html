@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>临时书架_{$TDK.webname}</title>
+<meta name="keywords" content="{$TDK.keyword}" />
+<meta name="description" content="{$TDK.description}" />
+<link rel="canonical" href="{$TDK.canonicalurl}"/>
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="applicable-device" content="pc">
+<link href="__PUBLIC__/{$theme}/css/base.css?v{$version}" rel="stylesheet">
+<link href="__PUBLIC__/{$theme}/css/book.css?v{$version}" rel="stylesheet">
+<script src="__PUBLIC__/{$theme}/js/base.js?v{$version}" type="text/javascript"></script>
+<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}"></script>
+<script>var view_rule = '{:C('HOME_URL')}{:C('VIEW_RULE')}', chapter_rule = '{:C('HOME_URL')}{:C('CHAPTER_RULE')}';</script>
+<style type="text/css">
+.item-cover{float:left;margin:15px 11px 0 12px;display:inline;width:134px;height:198px;overflow:hidden;color:#888;position:relative;}.item-cover:last-child{margin-bottom:15px;}.item-cover a{text-decoration:none;}.item-cover a img{padding:2px;border:1px solid #ddd;width:128px;height:162px;}.item-cover a:hover img{border:1px solid #f99800;}.item-cover h3{height:30px;line-height:30px;overflow:hidden;font-weight:normal;text-align:center;}.bookcase ul{padding:15px 0;}.bookcase li{border-bottom:solid 1px #DDDDDD;height:36px;line-height:36px;overflow:hidden;}.bookcase li span{float:left;display:inline-block;}.bookcase li .s1{width:12%;overflow:hidden;text-align:center;}.bookcase li .s2{width:20%;overflow:hidden;}.bookcase li .s3{width:33%;overflow:hidden;}.bookcase li .s4{width:15%;overflow:hidden;}.bookcase li .s5{color:red;width:10%;overflow:hidden;}.bookcase li .s6{width:10%;overflow:hidden;}.bookcase li a{color:#6F78A7;}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="container">
+		<div class="list_center">
+			<div class="title">
+				<span class="label"></span><em>临时书架 - 用户浏览过的小说会自动保存到书架中（只限同一电脑）</em>
+			</div>
+			<div class="details bookcase cf">
+				<ul>
+					<li><span class="s1"><b>作品分类</b></span><span class="s2"><b>作品名称</b></span><span class="s3"><b>上次阅读章节</b></span><span class="s4"><b>作者</b></span><span class="s5"><b>操作</b></span><span class="s6"><b>&nbsp;</b></span><span class="s7"><b>&nbsp;</b></span></li>
+					<div class="read_book"></div>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>loadbooker();</script>
+	{$advcode.list_1.code}
+	<div class="container">
+		<div class="inner">
+			<div class="title"><span class="label"></span><em>{$TDK.webname}小说周榜</em></div>
+			<div class="details cf">
+				<ul>
+				<foreach name="dataarea_list.81zw_week6" item="v">
+					<li class="item-cover">
+						<a href="{$v['rewriteurl']}" title="{$v['title']}">
+							<img src="{$v['thumb']}" alt="{$v['title']}" />
+							<h3>{$v['title']}</h3>
+						</a>
+					</li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<include file="Public/footer" />
+</div>
+<script src="__PUBLIC__/{$theme}/js/footer.js"></script>
+</body>
+</html>

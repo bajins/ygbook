@@ -1,0 +1,68 @@
+<if condition="$action eq 'view'">
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">标签统计</strong> / <small>{$arcnum}篇相关文章</small></div>
+</div>
+<hr>
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+			 <tr>
+					<th class="table-id">ID</th>
+					<th class="table-title">文章名</th>
+					<th class="table-type">栏目</th>
+					<th class="table-date">时间</th>
+				</tr>
+			</thead>
+			<foreach name="arclist" item="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td><a href="{$vo.rewriteurl}" target="_blank">{$vo.title}</a></td>
+				<td>{$vo.catename}</td>
+				<td>{$vo.posttime}</td>
+			</tr>
+			</foreach>
+		</table>
+	</div>
+</div>
+<else />
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">标签统计</strong> / <small>{$tagnum}个标签</small></div>
+</div>
+<hr>
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+				<tr>
+					<th class="table-id">ID</th>
+					<th class="table-title">标签名</th>
+					<th class="table-type">拼音</th>
+					<th class="table-date">文章数</th>
+					<th class="table-set">操作</th>
+				</tr>
+			</thead>
+			<foreach name="taglist" item="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td><a href="{:U('Tags',array('action'=>'view','tid'=>$vo['id']))}">{$vo.tagname}</a></td>
+				<td>{$vo.ename}</td>
+				<td>{$vo.num}</td>
+				<td>
+					<div class="am-btn-toolbar">
+						<div class="am-btn-group am-btn-group-xs">
+							<a href="{$vo.tagurl}" class="am-btn am-btn-success am-btn-xs" target="_blank"><span class="am-icon-pencil-square-o"></span> 查看</a>
+						</div>
+					</div>
+				</td>
+			</tr>
+			</foreach>
+		</table>
+		<div class="am-cf">
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</if>

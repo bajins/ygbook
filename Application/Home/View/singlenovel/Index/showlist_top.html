@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" media="screen and (max-width:600px)" href="__PUBLIC__/{$theme}/css/mobile.css" type="text/css" />
+	<script src="__PUBLIC__/{$theme}/js/jquery2.1.4.min.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/user.js"></script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="container ads">
+	<div class="inner">
+		{$advcode.list_1.code}
+	</div>
+</div>
+<div class="container">
+	<div class="inner">
+		<div class="title"><h2>{$TDK.catename}小说周榜</h2></div>
+		<div class="details">
+			<ul class="item-qb">
+				<foreach name="dataarea_list.pc_top_week" item="v">
+				<li><a href="{$v.rewriteurl}" title="{$v.title}">{$v['title']}</a><span>/<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span></li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="inner">
+		<div class="title"><h2>{$TDK.catename}小说月榜</h2></div>
+		<div class="details">
+			<ul class="item-qb">
+				<foreach name="dataarea_list.pc_top_month" item="v">
+				<li><a href="{$v.rewriteurl}" title="{$v.title}">{$v['title']}</a><span>/<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span></li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="inner">
+		<div class="title"><h2>{$TDK.catename}小说总榜</h2></div>
+		<div class="details">
+			<ul class="item-qb">
+				<foreach name="dataarea_list.pc_top_all" item="v">
+				<li><a href="{$v.rewriteurl}" title="{$v.title}">{$v['title']}</a><span>/<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span></li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

@@ -1,0 +1,206 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}">
+	<meta name="description" content="{$TDK.description}">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/ptm.min.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/skin.min.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/font-awesome.min.css" />
+</head>
+<body>
+<include file="Public/header" />
+<section class="ptm-content">
+	<include file="Public/nav" />
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			<div class="ptm-pull-left">
+				本周热门
+			</div>
+		</div>
+		<div class="ptm-card-content" style="padding:0">
+			<ul class="ptm-list-view ptm-grid-view pt-card-1">
+				<foreach name="dataarea_list.wap_index_top" item="v">
+				<li class="ptm-list-view-cell ptm-img ptm-col-xs-4">
+					<div class="imgarea">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img class="ptm-img-object" {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="ptm-img-body">
+						<span class="ptm-block pt-name ptm-text-cut"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></span>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	{$advcode.index_1.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			{:getcate('xuanhuan')}
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="dataarea_list.wap_index_xuanhuan" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author"><a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></div>
+						<div class="pt-desc ptm-text-cut">{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer">
+			<a href="{:getcate('xuanhuan', 'href')}">更多{:getcate('xuanhuan', 'text')}>></a>
+		</div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			{:getcate('xiuzhen')}
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="dataarea_list.wap_index_xiuzhen" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author"><a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></div>
+						<div class="pt-desc ptm-text-cut">{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer">
+			<a href="{:getcate('xiuzhen', 'href')}">更多{:getcate('xiuzhen', 'text')}>></a>
+		</div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			{:getcate('dushi')}
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="dataarea_list.wap_index_dushi" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author"><a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></div>
+						<div class="pt-desc ptm-text-cut">{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer">
+			<a href="{:getcate('dushi', 'href')}">更多{:getcate('dushi', 'text')}>></a>
+		</div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			{:getcate('wangyou')}
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="dataarea_list.wap_index_wangyou" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author"><a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></div>
+						<div class="pt-desc ptm-text-cut">{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer">
+			<a href="{:getcate('wangyou', 'href')}">更多{:getcate('wangyou', 'text')}>></a>
+		</div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			{:getcate('nvpin')}
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-7">
+				<foreach name="dataarea_list.wap_index_nvpin" item="v">
+				<li>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+					<div class="pt-novel">
+						<div class="pt-num ptm-pull-right"><span style="color:orange">{$v.views}</span>人阅读</div>
+						<div class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></div>
+						<div class="pt-author"><a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></div>
+						<div class="pt-desc ptm-text-cut">{$v.description}</div>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer">
+			<a href="{:getcate('nvpin', 'href')}">更多{:getcate('nvpin', 'text')}>></a>
+		</div>
+	</div>
+	{$advcode.index_2.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			最近更新
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-6">
+				<foreach name="updatelist" item="v">
+				<li>
+					<div class="pt-novel">
+						<div class="pt-one">
+							<span class="pt-author">{$v['updatetime']} </span>
+							<span class="pt-name"><a href="{$v['rewriteurl']}" title="{$v['title']}">{$v['title']}</a></span>
+							<span class="pt-author"> / <a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></span>
+						</div>
+						<div class="pt-desc ptm-text-cut "><a href="{$v['rewriteurl']}" title="{$v['title']} {$v['lastchapter']}" target="_blank">{$v['lastchapter']}</a></div>
+					</div>
+					<div class="pt-cover">
+						<a href="{$v['rewriteurl']}" title="{$v['title']}"><img {$comset.src}="{$v['thumb']}" alt="{$v['title']}"></a>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	{$advcode.index_3.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			友情链接
+		</div>
+		<div class="ptm-card-content">
+			<p class="friendlink">
+				<foreach name="TDK.flink" item="v3">
+				<a href="{$v3['url']}" target="_blank">{$v3['name']}</a>
+				</foreach>
+			</p>
+		</div>
+	</div>
+</section>
+<div class="ptm-line-x"></div>
+<include file="Public/footer" />
+</body>
+</html>

@@ -1,0 +1,405 @@
+<style type="text/css">
+	.admin-content{
+		min-height: 750px;
+	}
+</style>
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">文章列表/管理</strong></div>
+</div>
+<hr>
+<if condition="$action eq null">
+<div class="am-g">
+	<div class="am-u-sm-12 am-u-md-8">
+		<div class="am-form-group">
+			<select data-am-selected="{btnSize: 'sm'}" onchange="gotype(this.options[this.selectedIndex])">
+			<option value="all">全部文章</option>
+			<foreach name="category" item="vo" key="key">
+				<option value="{$key}" {:getsel($cate, $key)}><if condition="$key eq 'default'">默认-</if>{$vo.name}</option>
+			</foreach>
+				<option value="nocover" {:getsel($cate, 'nocover')}>无封面图</option>
+				<option value="nocate" {:getsel($cate, 'nocate')}>无分类</option>
+			</select>
+			<select data-am-selected="{btnSize: 'sm'}" onchange="gopick(this.options[this.selectedIndex])">
+			<option value="all">采集节点</option>
+			<foreach name="pick" item="vo" key="key">
+				<option value="{$key}" {:getsel($picker, $key)}>{$key}</option>
+			</foreach>
+			</select>
+			<select data-am-selected="{btnSize: 'sm'}" onchange="goorder(this.options[this.selectedIndex])">
+				<option value="id" {:getsel($orderby, 'id')}>编号(默认)</option>
+				<option value="views" {:getsel($orderby, 'views')}>总人气</option>
+				<option value="monthviews" {:getsel($orderby, 'monthviews')}>月人气</option>
+				<option value="weekviews" {:getsel($orderby, 'weekviews')}>周人气</option>
+				<option value="posttime" {:getsel($orderby, 'posttime')}>发表时间</option>
+				<option value="updatetime" {:getsel($orderby, 'updatetime')}>更新时间</option>
+				<option value="full" {:getsel($orderby, 'full')}>完结</option>
+				<option value="original" {:getsel($orderby, 'original')}>原创</option>
+				<option value="push" {:getsel($orderby, 'push')}>已推送</option>
+			</select>
+		</div>
+	</div>
+	<div class="am-u-sm-12 am-u-md-3">
+		<form role="search" action="__ACTION__" method="post">
+			<div class="am-input-group am-input-group-sm">
+				<input type="text" class="am-form-field" name="q" value="{$q}" onclick="this.value=''">
+				<span class="am-input-group-btn">
+					<button class="am-btn am-btn-default" type="submit">搜索</button>
+				</span>
+			</div>
+		</form>
+	</div>
+	<div class="am-u-sm-12 am-u-md-1">
+		<a class="am-btn am-btn-success am-btn-sm" href="{:U('article', array('action' => 'add'))}">
+			<i class="am-icon-plus"></i> 添加文章
+		</a>
+	</div>
+</div>
+</if>
+<div class="am-g">
+	<div class="am-u-sm-12">
+	<if condition = "$action eq 'add' or $action eq 'edit'">
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="{$action}"/>
+		<input type="hidden" name="id" value="{$articledb.id}">
+		<input type="hidden" name="do" value="save">
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					源网页地址
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<if condition="$action eq 'edit'">
+					<input type="text" class="am-input-sm" name="url" value="{$articledb.url}">
+					<else />
+					<input type="text" name="url" class="am-input-sm">
+					</if>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">必填，必须符合采集规则中的网址</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					所属采集点
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<select name="pid">
+					<foreach name="pick" item="vo" key="key">
+						<option value="{$key}"<if condition="$articledb['pid'] eq $vo['name']"> selected</if>>{$vo.name}</option>
+					</foreach>
+					</select>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6"></div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					文章标题
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<input type="text" class="am-input-sm" name="title" value="{$articledb.title}">
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">*必填</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					文章分类
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<select name="cate">
+					<foreach name="category" item="vo" key="key">
+						<option value="{$vo.dir}"<if condition="$articledb['cate'] eq $vo['dir']"> selected</if>><if condition="$key eq 'default'">默认-</if>{$vo.name}</option>
+					</foreach>
+					</select>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6"></div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					文章作者
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" name="author" value="{$articledb.author}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					浏览量
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" name="views" value="{$articledb.views}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					周浏览量
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" name="weekviews" value="{$articledb.weekviews}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					月浏览量
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" name="monthviews" value="{$articledb.monthviews}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					缩略图/封面
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" name="thumb" value="{$articledb.thumb}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					完结
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<select name="full">
+						<option value="0" {:getsel($articledb['full'], '0')}>否</option>
+						<option value="1" {:getsel($articledb['full'], '1')}>是</option>
+					</select>
+				</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					原创
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<select name="original">
+						<option value="0" {:getsel($articledb['original'], '0')}>否</option>
+						<option value="1" {:getsel($articledb['original'], '1')}>是</option>
+					</select>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">原创小说不会自动更新，只能手动添加/编辑/删除章节。节点任选，url不和现有的重复</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					强制更新
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<select name="update">
+						<option value="0" {:getsel($articledb['update'], '0')}>否</option>
+						<option value="1" {:getsel($articledb['update'], '1')}>是</option>
+					</select>
+				</div>
+			</div>
+			<if condition = "$action eq 'edit'">
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					SEO优化/标题
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" placeholder="留空则使用系统设置" name="seotitle" value="{$articledb.seotitle}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					SEO优化/关键词
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" placeholder="留空则使用系统设置" name="seokeyword" value="{$articledb.seokeyword}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					SEO优化/描述
+				</div>
+				<div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+					<input type="text" class="am-input-sm" placeholder="留空则使用系统设置" name="seodescription" value="{$articledb.seodescription}">
+				</div>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">
+					内容摘要（内容的简化）
+				</div>
+				<div class="am-u-sm-12 am-u-md-10">
+					<textarea name="description" id="description" cols="30" rows="10">{$articledb.description}</textarea>
+				</div>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-12 am-u-md-2 am-text-right admin-form-text">
+					文章内容/小说介绍
+				</div>
+				<div class="am-u-sm-12 am-u-md-10">
+					<script id="ueditor" name="content" type="text/plain">{$articledb.content}</script>
+				</div>
+			</div>
+			<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+			<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+			<script type="text/javascript">
+				UE.getEditor('ueditor');
+			</script>
+			</if>
+			<div class="am-margin">
+				<button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+			</div>
+		</form>
+	<else />
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action">
+		<input type="hidden" name="newfid">
+			<table class="am-table am-table-striped am-table-hover table-main">
+				<thead>
+					<tr>
+						<th class="table-check am-hide-sm-only"><input class="selectall" id="selectall" type="checkbox" /></th>
+						<th class="table-id am-hide-sm-only">ID</th>
+						<th class="table-title">标题</th>
+						<th class="table-type am-hide-sm-only">类别</th>
+						<th class="table-author am-hide-sm-only">作者</th>
+						<th class="table-author am-hide-sm-only">节点</th>
+						<th class="table-author am-hide-sm-only">人气(总/月/周)</th>
+						<th class="table-author am-hide-sm-only">推送</th>
+						<th class="table-date am-hide-sm-only">入库日期</th>
+						<th class="table-set">操作</th>
+					</tr>
+				</thead>
+				<foreach name="articlelist" item="vo">
+					<tr>
+						<td class="am-hide-sm-only"><input type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+						<td class="am-hide-sm-only">{$vo.id}</td>
+						<td><a href="{:U('article',array('action'=>'edit','id'=>$vo['id']))}" target="_blank">{$vo.title}</a></td>
+						<td class="am-hide-sm-only"><a href="{:U('article',array('cate'=>$vo['cate']))}">{$vo.catename}</a></td>
+						<td class="am-hide-sm-only"><a href="{:reurl('author', $vo)}" target="_blank">{$vo.author}</a></td>
+						<td class="am-hide-sm-only"><a href="{:U('article',array('picker'=>$vo['pid']))}">{$vo.pid}</a></td>
+						<td class="am-hide-sm-only">{$vo.views}/{$vo.monthviews}/{$vo.weekviews}</td>
+						<td class="am-hide-sm-only"><if condition="$vo.push gt 0"><font color=green>已推送</font><else />未推送[<a href="{:U('article',array('action'=>'push','id'=>$vo['id']))}">推</a>]</if></td>
+						<td class="am-hide-sm-only">{$vo.posttime}</td>
+						<td>
+							<div class="am-dropdown" data-am-dropdown>
+								<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+								<ul class="am-dropdown-content">
+									<li><a href="{:reurl('view', $vo)}" target="_blank">查看</a></li>
+									<li><a href="{:U('article',array('action'=>'edit','id'=>$vo['id']))}" target="_blank">编辑</a></li>
+									<li><a onclick="return confirm('确认删除吗？')" href="{:U('article',array('action'=>'del','id'=>$vo['id']))}">删除</a></li>
+									<li class="am-divider"></li>
+									<li><a href="{:U('article',array('action'=> 'settype' ,'type' => 'cfull','id'=>$vo['id']))}">设为完结</a></li>
+									<li><a href="{:U('article',array('action'=> 'settype' ,'type' => 'update','id'=>$vo['id']))}">强制更新</a></li>
+									<li><a href="{:U('article',array('action'=> 'settype' ,'type' => 'original','id'=>$vo['id']))}">设为原创</a></li>
+									<li class="am-divider"></li>
+									<li><a href="{:U('extend/chapter',array('action'=>'list','id'=>$vo['id']))}">章节列表</a></li>
+									<li><a href="javascript:;" class="loadpickers" data-aid="{$vo.id}">转换节点</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</foreach>
+			</table>
+		</form>
+		<div class="am-cf">
+			<div class="am-fl">
+				<button class="am-btn am-btn-primary selectall">全选</button>
+				<div class="am-dropdown am-dropdown-up" data-am-dropdown>
+					<button class="am-btn am-btn-danger am-dropdown-toggle" data-am-dropdown-toggle>批量操作 <span class="am-icon-caret-up"></span></button>
+					<ul class="am-dropdown-content multi-operation">
+						<li><a href="javascript:;" data-action="multi-delete">批量删除</a></li>
+						<li><a href="javascript:;" data-action="multi-move">移动栏目</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+		<div class="am-modal am-modal-no-btn" tabindex="-1" id="move-modal">
+			<div class="am-modal-dialog">
+				<div class="am-modal-hd">批量移动文档
+					<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+				</div>
+				<div class="am-modal-bd">
+					<div style="margin: 20px 10px">
+						移动文档到：
+						<select name="move-to-fid">
+							<option value="no">选择栏目</option>
+							<foreach name="category" item="vo" key="key">
+							<option value="{$key}"><if condition="$key eq 'default'">默认-</if>{$vo.name}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="am-modal am-modal-no-btn" tabindex="-1" id="picker-modal">
+			<div class="am-modal-dialog">
+				<div class="am-modal-hd">节点列表
+					<a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+				</div>
+				<div class="am-modal-bd am-text-left">
+					<div id="picker_area" style="margin: 20px 10px"><ul class="am-list am-list-static am-list-border"></ul></div>
+				</div>
+			</div>
+		</div>
+<script>
+$(function(){
+	$('.am-dropdown-toggle').each(function(){
+		var obj = $(this).next('.am-dropdown-content');
+		if($(document).height() - $(this).offset().top - 100 < 286){
+			$(this).parent('.am-dropdown').addClass('am-dropdown-up');
+		}
+	});
+	$('.selectall').on('click', function(){
+		if($(this).attr('id') != 'selectall'){
+			$('#selectall').click();
+		}
+		$('td input[type=checkbox]').attr('checked', $('#selectall').is(':checked'));
+		$('td input[type=checkbox]').prop('checked', $('#selectall').is(':checked'));
+		$('button.selectall').text($('#selectall').is(':checked') ? '不选' : '全选');
+	});
+	$('.multi-operation li a').on('click', function(){
+		var idnum = $('td input[type=checkbox]:checked').length;
+		$('.am-dropdown').dropdown('close');
+		if(idnum < 1){
+			alert('请选择要操作的文档');
+		} else {
+			var operation = $(this).data('action') == 'multi-delete' ? '删除' : '移动';
+			$('.am-form input[name=action]').val($(this).data('action'));
+			var toconfirm = function(title){
+				if(confirm(title) === true){
+					$('.am-form').submit();
+				}
+			}
+			if($(this).data('action') == 'multi-move'){
+				$('#move-modal').modal();
+				$('select[name=move-to-fid]').on('change', function(){
+					$('.am-form input[name=newfid]').val($(this).val());
+					toconfirm('确认要' + operation + '这' + idnum + '个文档到' + $(this).find('option:selected').text() + '？');
+				});
+			} else {
+				toconfirm('确认要' + operation + '这' + idnum + '个文档吗？');
+			}
+		}
+	});
+	$('.loadpickers').on('click', function(){
+		aid = $(this).data('aid');
+		itemhtml = '';
+		$.ajax({
+			url: "{:U('pick', array('action' => 'picker_list', 'id' => '__string__'))}" . replace('__string__', aid),
+			async: true,
+			dataType: 'json',
+			success: function(data){
+				$('.am-dropdown').dropdown('close');
+				if(data.status == 'success'){
+					if(data.picker_list.length > 0){
+						$.each(data.picker_list, function(i, item){
+							itemhtml += '<li><button class="am-btn am-btn-success am-btn-xs am-padding-xs" data-aid="'+aid+'" data-pid="'+item.pid+'">选择</button> '+item.pid+' - '+item.url+'</li>'
+						});
+						$('#picker-modal').modal();
+						$('#picker_area ul').html(itemhtml);
+					} else {
+						alert('此文章暂无节点');
+					}
+				}
+			}
+		});
+	});
+	$('#picker_area').delegate('li button', 'click', function(){
+		pid = $(this).data('pid'), aid = $(this).data('aid');
+		if(confirm('确认要移动文档到《'+pid+'》') === true){
+			location.href = "{:U('pick', array('action' => 'singletoggle', 'id' => '__string1__', 'toname' => '__string2__'))}" . replace('__string1__', aid) . replace('__string2__', pid);
+		}
+	});
+})
+</script>
+	</if>
+	</div>
+</div>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$TDK.title}</title>
+<meta name="keywords" content="{$TDK.keyword}" />
+<meta name="description" content="{$TDK.description}" />
+<meta http-equiv="Cache-Control" content="no-transform" /> 
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="canonical" href="{$TDK.canonicalurl}"/>
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+<meta property="og:type" content="novel"/>
+<meta property="og:title" content="{$articledb.title}"/>
+<meta property="og:description" content="{$articledb.description}"/>
+<meta property="og:image" content="{$articledb.thumb}"/>
+<meta property="og:novel:category" content="{$articledb.catename}"/>
+<meta property="og:novel:author" content="{$articledb.author}"/>
+<meta property="og:novel:book_name" content="{$articledb.title}"/>
+<meta property="og:novel:read_url" content="{$TDK.canonicalurl}"/>
+<meta property="og:url" content="{:C('PCHOST')}{$articledb.firstchapterurl}"/>
+<meta property="og:novel:status" content="<if condition="$articledb['full'] eq 0">连载中<else />已完成</if>"/>
+<meta property="og:novel:update_time" content="{$articledb.time}"/>
+<meta property="og:novel:latest_chapter_name" content="{$articledb.lastchapter}"/>
+<meta property="og:novel:latest_chapter_url" content="{:C('PCHOST')}{$articledb.lastchapterurl}"/>
+<link href="__PUBLIC__/{$theme}/css/base.css?v{$version}" rel="stylesheet">
+<script src="__PUBLIC__/{$theme}/js/base.js?v{$version}" type="text/javascript"></script>
+<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}" type="text/javascript"></script>
+<script>var bookid = '{$TDK.oid}', hash = '{$TDK.hash}', index_rule = '{:C('ID_RULE')}', cindex_rule = '{:C('CID_RULE')}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="container">
+		<div class="inner-book">
+			<div class="title"><span class="label"></span><h2><a href="{$TDK.weburl}">{$TDK.webname}</a> » <a href="{$TDK.cateurl}">{$articledb.catename}</a> » <a href="{$TDK.canonicalurl}" title="{$articledb.title}">{$articledb.title}</a></h2></div>
+			<div class="details" id="bookinfo">
+				<div id="article">
+					<div class="cf">
+						<div class="book-img">
+							<a href="{$TDK.canonicalurl}"><img src="{$articledb.thumb}" alt="{$articledb.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+						</div>
+						<div class="book-info">
+							<div class="book-title">
+								<h1>{$articledb.title}</h1>
+							</div>
+							<p class="book-stats">
+								<b>作者：<a href="{:reurl('author', $articledb)}" target="_blank" title="{$articledb.author}">{$articledb.author}</a></b>
+								<b>分类：<a href="{$TDK.cateurl}">{$articledb.catename}</a></b>
+								<b>状态：<if condition="$articledb['full'] eq 0">连载中<else />已完成</if></b>
+								<b>更新时间：{$articledb.time}</b>
+								<b>人气：{$articledb.views}</b>
+							</p>
+							<div class="book-intro">
+								<span>{$articledb.title}简介：</span>{$articledb.content}<br>
+								<span>{$articledb.title}最新章节：</span><a href="{$articledb.lastchapterurl}" target="_blank" title="{$articledb.title}最新章节">{$articledb.lastchapter}</a>
+							</div>
+							<div class="book-link cf">
+								<a class="b-orange" href="#allchapter" target="_self" title="{$articledb.title}章节列表">章节列表</a>
+								<a href="{$articledb.firstchapterurl}">开始阅读</a>
+								<a class="b-orange" href="javascript:void(0)" onclick="addbookcase()">加入书架</a>
+								<a href="{$TDK.canonicalurl_m}" target="_blank" title="{$articledb.title}手机阅读" id="towap">手机阅读</a>
+							</div>
+						</div>
+					</div>
+					<div class="recbook">
+						<p>
+							<span>推荐阅读：</span><a href="{$TDK.canonicalurl}">{$articledb.title}</a>
+							<foreach name="dataarea_list.81zw_view_text" item="v">
+							、<a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a>
+							</foreach>
+						</p>
+					</div>
+				</div>
+				<div class="clr"></div>
+			</div>
+		</div>
+		{$advcode.view_1.code}
+		<div class="inner chaptermain" id="newchapter">
+			<div class="title"><span class="label"></span><h2>《{$articledb.title}》最新章节</h2></div>
+			<div class="details">
+				<dl class="chapterlist cf">
+					<foreach name="newchaperlist" item="v2">
+						<dd><a href="{:reurl('chapter', $v2, $maindomain)}" target="_blank" title="{$articledb.title} {$v2.title}">{$v2.title}</a></dd>
+					</foreach>
+				</dl>
+				<div class="loading-tip"><img src="__PUBLIC__/{$theme}/images/loading.gif" alt=""> 亲爱的书友您好，{$TDK.webname}机器人正在为您抓取《{$articledb.title}》最新章节……</div>
+				<div class="loading-success">《{$articledb.title}》最新章节抓取成功，请享受阅读的乐趣吧^_^</div>
+				<div class="loading-fail">《{$articledb.title}》最新章节抓取失败，可能是网络或源站出错，请稍候重试</div>
+			</div>
+		</div>
+		{$advcode.view_2.code}
+		<div class="inner chaptermain" id="allchapter">
+			<div class="title" id="alllist"><span class="label"></span><h2>《{$articledb.title}》章节列表</h2></div>
+			<div class="details">
+				<dl class="chapterlist">
+					<foreach name="chapterdb" item="v3">
+						<dd><a href="{:reurl('chapter', $v3, $maindomain)}" target="_blank" title="{$articledb.title} {$v3.title}">{$v3.title}</a></dd>
+					</foreach>
+					<div class="clr"></div>
+					<div class="booktags">
+						<b>Tags:</b>
+						<u>{$articledb.title}最新章节</u>、<u>{$articledb.title}无弹窗</u>、<u>{$articledb.title}小说</u><foreach name="articledb.taglist" item="v2">、<a href="{$v2.tagurl}">{$v2.tagname}</a></foreach>
+					</div>
+				</dl>
+			</div>
+			<div class="inner">
+				<div class="title">
+					<span class="label"></span><em>精品小说随机推荐</em>
+				</div>
+				<div class="recomclass cf">
+					<foreach name="dataarea_list.81zw_view_recommend" item="v">
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img src="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+						<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+						<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+						<dd>{$v.description}...</dd>
+					</dl>
+					</foreach>
+					<ul>
+					<foreach name="dataarea_list.81zw_view_recommend2" item="v">
+						<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+					</foreach>
+					</ul>
+				</div>
+			</div>
+			<div class="inner">
+				<div class="title"><span class="label"></span><em>{$TDK.webname}温馨提示</em></div>
+				<div class="details notice">
+					<font color="red">抵制不良作品，拒绝浏览盗贴；注意自我判断，请勿模仿主角；适度阅读益脑，沉迷网络伤身；合理安排时间，享受健康阅读。</font><br />①如果您发现<a href="{$TDK.canonicalurl}">{$articledb.title}最新章节</a>，而本站又没有更新，请<a href="javascript:;">提醒我们</a>，我们会立即处理。<br />②我们不保证《<a href="{$TDK.canonicalurl}">{$articledb.title}</a>》小说文字完整无错，但我们会尽力纠错，努力打造最好的《{$articledb.title}》无弹窗小说网。<br />③ 如果您发现本书《<a href="{$TDK.canonicalurl}">{$articledb.title}</a>》错误章节，请及时<a href="javascript:;">告诉我们</a>，您的热心是对网站最大的支持。
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.view_3.code}</div>
+	<include file="Public/footer" />
+</div>
+<script id="chapterhtml" type="text/html">
+	<dd><a href="{:C('HOME_URL')}{:C('CHAPTER_RULE')}" target="_blank">{title}</a></dd>
+</script>
+<script>
+function addbookcase(){
+	lastread.set({$TDK.oid},0,'{$articledb.title}','第一章','{$articledb.author}','{$articledb.catename}','{$TDK.subid}');
+	alert('成功加入书架');
+}
+</script>
+<script src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+</body>
+</html>

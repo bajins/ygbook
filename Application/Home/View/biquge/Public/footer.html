@@ -1,0 +1,15 @@
+<div class="footer">
+	<div class="footer_link"></div>
+	<div class="footer_cont">
+		<script>footer();</script>{$statcode}
+	</div>
+</div>
+<if condition="$comset.src neq 'src'">
+<script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script>
+$(function() {
+	$('[rel-class=lazyload]').lazyload({effect: "fadeIn"});
+});
+</script>
+</if>
+{$advcode.global_footer.code}

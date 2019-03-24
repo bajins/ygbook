@@ -1,0 +1,53 @@
+﻿.margin_right{margin-right:2%}
+.height{height:5px;clear:both}
+.line{border-bottom:1px solid #efefef;padding-bottom:5px;padding-top:5px;color:#999}
+.gray{color:gray}
+.blue{color:#007BB1;font-size:18px}
+.login_topbtn{padding:5px 3px;margin-left:5px;border-radius:3px}
+.c_index_login{background-color:#65BBEC}
+#info{height:30px; line-height:30px; text-align:right;color:#fff;padding-right:15px;background-color:#65bbec;font-size:14px;}
+/*article*/
+.article{margin:10px auto 10px auto}
+.title{height:35px;background:#ECF0F0;border-bottom:1px solid #007BB1;color:#000;font-size:16px;padding-left:10px;line-height:35px;font-weight:400;font-weight:700}
+.title a{float:right;padding-right:10px;font-size:14px;font-weight:400}
+.title span a{float:left;font-size:16px;font-weight:700}
+.title a.on{color:#623f01}
+.title .more{float:right;margin-right:10px}
+.title .more a{color:#fff}
+/*info*/
+.cover{width:99%;margin:10px auto 10px auto;height:auto;overflow:hidden}
+.cover p{text-indent:8px}
+.ablum{height:auto;overflow:auto;padding-bottom:5px}
+.ablum_img img{float:left;padding:2px;border:1px solid #DEDEDE;overflow:hidden;background:url(../images/cover.jpg)}
+.ablum_img2 img{float:left;height:85px;padding:2px;border:1px solid #DEDEDE;overflow:hidden;width:70px;background:url(../images/cover.jpg)}
+.ablum_info{float:left;line-height:28px;padding-left:10px;font-size:15px;height:100px;overflow:hidden}
+.ablum div{height:auto}
+.ablum .new a{color:#007BB1;font-weight:700}
+.ablum_read{height:auto;padding:5px 0 5px 0;overflow:hidden}
+.ablum_read ul li{width: 30%;margin: 0 1.5%;height:40px;line-height:40px;float: left;}
+.ablum_read ul li a{display:block;background:#65bbec;color:#fff;border-radius:3px;text-align:center;}
+#new{height:165px;width:130px;background:0 0}
+.intro{border-bottom:1px solid #65bbec;background:#ECF0F0;height:35px;line-height:35px;padding-left:8px;font-weight:700;font-size:15px;color:#000;margin-top:5px}
+.intro_info{padding:10px}
+.chapter li{border-bottom:1px solid #efefef;text-indent:10px;height:40px;line-height:40px;color:#999;overflow:hidden;}
+.chapter li a{display:block;}
+
+/*listpage*/
+.listpage{width:90%;margin:0 auto;height:30px;line-height:30px;overflow:hidden;padding-top:15px;padding-bottom:5px;}
+.listpage span{height:30px;line-height:30px;text-align:center;}
+.listpage .left{float:left;width:25%;}
+.listpage .left a,.listpage .right a{display:inline-block;height:30px;width:90%}
+.listpage .left a{float:left;}
+.listpage .right a{float:right;}
+.listpage .right{float:right;width:25%}
+.listpage .middle{width:49%;border:1px solid #dfdfdf;height:28px;display:block;float:left;border-radius:5px;}
+.listpage .middle em{display:inline-block;width:80%;text-align:center;color:#999;font-style:normal;float:left;line-height:30px;height:30px}
+.listpage .middle a{display:inline-block;float:left;width:19%;height:30px;line-height:30px;vertical-align:middle}
+.listpage .middle select{border:none;color:#999;display:inline-block;float:left;font-style:normal;height:28px;line-height:28px;text-align:center;width:100%}
+.listpage .onclick{background:#20a8e3;color:#FFFFFF;}
+.listpage .before{background:#cecece;color:#FFFFFF;}
+
+.friendlink{
+	max-height: 70px;
+	overflow-y: scroll;
+}

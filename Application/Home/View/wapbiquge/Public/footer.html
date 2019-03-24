@@ -1,0 +1,20 @@
+<div class="footer">
+	<ul>
+		<li><a href="/">首页</a></li>
+		<li><a href="{:U('/home/index/bookcase')}">书架</a></li>
+		<li><a href="{:U('/home/search')}">搜索</a></li>
+	</ul>
+</div>
+<script src="__PUBLIC__/{$theme}/js/zepto.min.js"></script>
+<script src='__PUBLIC__/trans.js'></script>
+{$statcode}
+<if condition="$comset.src neq 'src'">
+<script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script>
+$(function() {
+	$('[rel-class=lazyload]').lazyload({effect: "fadeIn"});
+});
+</script>
+</if>
+{$advcode.global_footer.code_wap}

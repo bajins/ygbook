@@ -1,0 +1,301 @@
+<script>
+	function changedomain(obj){
+		var type = obj.value;
+		if(type){
+			window.location.href= "{:U('dataarea', array('domain' => '__string__'))}" . replace('__string__', type);
+		}
+	}
+</script>
+<if condition="$nowdomain eq 'all' or $nowdomain eq 'null'">
+<style>
+	.am-tabs .am-btn{
+		display: none;
+	}
+</style>
+</if>
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-cf am-form">
+		<div class="am-g">
+			<div class="am-u-md-8">
+				<div class="am-fl"><strong class="am-text-primary am-text-lg">数据区块</strong> / <small>{$did}</small></div>
+				<div class="am-fr">
+					<select onchange="changedomain(this)">
+						<option value="default"<if condition="$nowdomain eq 'default'"> selected</if>>默认站点</option>
+						<option value="wap"<if condition="$nowdomain eq 'wap'"> selected</if>>默认手机站</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="am-tabs am-margin">
+	<if condition="$action eq 'edit'">
+	<div class="am-alert am-alert-warning" data-am-alert>
+		<button type="button" class="am-close">&times;</button>
+		<p>无需调用的数据留空即可。</p>
+	</div>
+	<div class="am-tab-panel am-fade am-in am-active">
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="{$action}"/>
+		<input type="hidden" name="did" value="{$did}"/>
+		<input type="hidden" name="do" value="save"/>
+		<input type="hidden" name="domain" value="{$nowdomain}"/>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				是否启用
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="open">
+					<option value="yes"<if condition="$dataarea[$did]['open'] eq 'yes'"> selected</if>>启用</option>
+					<option value="no"<if condition="$dataarea[$did]['open'] eq 'no'"> selected</if>>停用</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">是否启用</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				区块ID
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="did" value="{$dataarea.$did.did}" readonly>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">唯一标识，不可修改。</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				调用栏目
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="cate">
+					<option value="all"<if condition="$dataarea[$did]['cate'] eq 'all'"> selected</if>>全部栏目</option>
+					<foreach name="category" item="vo" key="key">
+					<option value="{$key}"<if condition="$dataarea[$did]['cate'] eq $key"> selected</if>><if condition="$key eq 'default'">默认-</if>{$vo.name}</option>
+					</foreach>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">多个栏目以“,”分隔，填写栏目dir。默认all，表示全部栏目</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				指定文章id
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="ids" value="{$dataarea.$did.ids}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">以“,”分隔，此处填写后则栏目无需填写</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				排序依据
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="orderby">
+					<option value="id"<if condition="$dataarea[$did]['orderby'] eq 'id'"> selected</if>>文章id</option>
+					<option value="views"<if condition="$dataarea[$did]['orderby'] eq 'views'"> selected</if>>总点击</option>
+					<option value="weekviews"<if condition="$dataarea[$did]['orderby'] eq 'weekviews'"> selected</if>>周点击</option>
+					<option value="monthviews"<if condition="$dataarea[$did]['orderby'] eq 'monthviews'"> selected</if>>月点击</option>
+					<option value="updatetime"<if condition="$dataarea[$did]['orderby'] eq 'updatetime'"> selected</if>>更新时间</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认id</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				排序方式
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="orderway">
+					<option value="desc"<if condition="$dataarea[$did]['orderway'] eq 'desc'"> selected</if>>倒序（从大到小）</option>
+					<option value="asc"<if condition="$dataarea[$did]['orderway'] eq 'asc'"> selected</if>>顺序（从小到大）</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认倒序</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				必须有缩略图
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="hasthumb">
+					<option value="no"<if condition="$dataarea[$did]['hasthumb'] eq 'no'"> selected</if>>否</option>
+					<option value="yes"<if condition="$dataarea[$did]['hasthumb'] eq 'yes'"> selected</if>>是</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认否</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				必须有简介
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="hasinfo">
+					<option value="no"<if condition="$dataarea[$did]['hasinfo'] eq 'no'"> selected</if>>否</option>
+					<option value="yes"<if condition="$dataarea[$did]['hasinfo'] eq 'yes'"> selected</if>>是</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认否</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				必须是全本
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="isfull">
+					<option value="no"<if condition="$dataarea[$did]['isfull'] eq 'no'"> selected</if>>否</option>
+					<option value="yes"<if condition="$dataarea[$did]['isfull'] eq 'yes'"> selected</if>>是</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认否</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				调用数量
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="number" class="am-input-sm" name="limit" value="{$dataarea.$did.limit}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认10</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				调用简介字数
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="number" class="am-input-sm" name="infolen" value="{$dataarea.$did.infolen}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认40</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				时间格式
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="dateformat" value="{$dataarea.$did.dateformat}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">默认“Y-m-d H:i:s”，对应为：年-月-日 时:分:秒。可只用m-d（月-日）等</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				更新频率
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="number" class="am-input-sm" name="expirehour" value="{$dataarea.$did.expirehour}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">单位：小时，默认5，即5小时后会再次更新</div>
+		</div>
+		<div class="am-margin">
+			<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+		</div>
+		<hr>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				区块参考代码
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<textarea class="am-input-sm" cols="30" rows="10" readonly>{$democode}</textarea>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">仅供参考，作者、简介等数据再未采集时，可能为空</div>
+		</div>
+		</form>
+	</div>
+	<elseif condition="$action eq 'export'" />
+	<div class="am-tab-panel am-fade am-in am-active">
+		<form class="am-form">
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				{$nowdomain}区块导出
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<textarea class="am-input-sm" cols="30" id="exportcode" rows="20">{$exportcode}</textarea>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4"></div>
+		</div>
+		</form>
+		<script>$('#exportcode').select();</script>
+	</div>
+	<elseif condition="$action eq 'import'" />
+	<div class="am-tab-panel am-fade am-in am-active">
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="{$action}"/>
+		<input type="hidden" name="do" value="save"/>
+		<input type="hidden" name="domain" value="{$nowdomain}"/>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				规则导入({$nowdomain})
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<textarea class="am-input-sm" name="code" cols="30" rows="20"></textarea>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4"></div>
+		</div>
+		<div class="am-margin">
+			<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+		</div>
+		</form>
+	</div>
+	<else />
+	<div class="am-tab-panel am-fade am-in am-active">
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				是否启用
+			</div>
+			<div class="am-u-sm-8 am-u-md-5 am-text-right">
+				区块ID（唯一，英文+字母）
+			</div>
+			<div class="am-hide-sm-only am-u-md-5">
+				<a class="am-btn am-btn-secondary am-btn-sm" onclick="addline('addarea','codearea')"><span class="am-icon-plus"></span> 新增</a>
+				<a class="am-btn am-btn-warning am-btn-sm" href="{:U('dataarea', array('action' => 'export', 'domain' => $nowdomain))}"><span class="am-icon-plus"></span> 导出</a>
+				<a class="am-btn am-btn-success am-btn-sm" href="{:U('dataarea', array('action' => 'import', 'domain' => $nowdomain))}"><span class="am-icon-plus"></span> 导入</a>
+			</div>
+		</div>
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="save"/>
+		<input type="hidden" name="domain" value="{$nowdomain}"/>
+		{~$i=0;}
+		<foreach name="dataarea" key="key" item="vo">
+			<if condition="$key neq 'default'">
+			<div id="area_{$i}">
+				<div class="am-g am-margin-top">
+					<div class="am-u-sm-4 am-u-md-2 am-text-right">
+						<select name="copen[]" id="popen_{$i}">
+							<option value="yes"<if condition="$vo['open'] eq 'yes'"> selected</if>>启用</option>
+							<option value="no"<if condition="$vo['open'] eq 'no'"> selected</if>>停用</option>
+							<option value="deleted" style="display:none">删除</option>
+						</select>
+					</div>
+					<div class="am-u-sm-8 am-u-md-5 am-text-right">
+						<input type="text" class="am-input-sm" name="cdid[]" value="{$vo.did}" readonly>
+					</div>
+					<div class="am-hide-sm-only am-u-md-5">
+						<a class="am-btn am-btn-success am-btn-xs" onclick="editdataarea('{$key}', '{$nowdomain}')"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+						<a class="am-btn am-btn-warning am-btn-xs" onclick="delline('{$i}')"><span class="am-icon-trash-o"></span> 删除</a>
+					</div>
+				</div>
+			</div>
+			</if>
+			{~$i++;}
+		</foreach>
+		<div id="codearea">
+			<div class="am-g am-margin-top am-hide-sm-only">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					<select name="nopen[]">
+						<option value="yes">启用</option>
+						<option value="no">停用</option>
+					</select>
+				</div>
+				<div class="am-u-sm-4 am-u-md-5 am-text-right">
+					<input type="text" class="am-input-sm" name="ndid[]" placeholder="区块ID" value="">
+				</div>
+				<div class="am-hide-sm-only am-u-md-5">区块ID唯一，请用英文+字母，如“pc_index_1”</div>
+			</div>
+		</div>
+		<div id="addarea"></div>
+		<div class="am-margin">
+			<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+			<a href="{:U('dataarea', array('action' => 'initialize', 'domain' => $nowdomain))}" class="am-btn am-btn-warning am-btn-sm">更新区块数据</a>
+		</div>
+		</form>
+	</div>
+	</if>
+</div>

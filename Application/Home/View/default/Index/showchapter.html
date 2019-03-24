@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$TDK.title}</title>
+<meta name="keywords" content="{$TDK.keyword}" />
+<meta name="description" content="{$TDK.description}" />
+<link rel="canonical" href="{$TDK.canonicalurl}"/>
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+<link href="__PUBLIC__/{$theme}/css/base.css?v{$version}" rel="stylesheet">
+<script src="__PUBLIC__/{$theme}/js/base.js?v{$version}" type="text/javascript"></script>
+<script src="__PUBLIC__/layer/layer.js" type="text/javascript"></script>
+<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}" type="text/javascript"></script>
+<style>
+	#source{display: none;}
+	html, #source{width: 100%; height: 100%;}
+	#ifexplorer{width: 976px; margin: 0 auto;}
+	.to_nextpage{text-align: center; }
+	.to_nextpage a{margin-left: -2em;font-weight: bold;color: #a94442;}
+</style>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="crumbs">
+		<a href="{$TDK.weburl}">{$TDK.webname}</a> > <a href="{$TDK.cateurl}">{$TDK.catename}</a> > <a href="{$TDK.articleurl}">{$TDK.articletitle}</a> > <a href="{$TDK.canonicalurl}">{$mychapterdb.title}</a>
+	</div>
+	<div class="container" id="chapter">
+		<div class="bookset">
+			<script>bookset();</script>
+		</div>
+		<div class="clr"></div>
+		<div class="article" id="main">
+			<div id="BookCon">			
+				<h1>{$TDK.articletitle} {$mychapterdb.title}<present name="mychapterdb.allsub">({$mychapterdb.nowsub}/{$mychapterdb.allsub})</present></h1>
+				<div class="link xb">
+					<if condition="$mychapterdb.prev neq null"><a href="{:reurl('chapter', $mychapterdb['prev'], $maindomain)}" rel="next"><present name="mychapterdb.prev.sub">上一页<else />上一章</present></a><else /><a href="javascript:alert('已经是第一章了');">上一章</a></if>
+					<a href="{$TDK.articleurl}" rel="index">章节列表</a>
+					<if condition="$mychapterdb.next neq null"><a href="{:reurl('chapter', $mychapterdb['next'], $maindomain)}" rel="next"><present name="mychapterdb.next.sub">下一页<else />下一章</present></a><else /><a href="javascript:alert('已经是最后一章了');">下一章</a></if> 
+					<a href="{$mychapterdb.sourceurl}" rel="nofollow" target="_blank">源网站</a> 正在进行转码阅读，不进行内容存储和复制
+				</div>
+				<div id="ifexplorer">
+					<iframe src="about:blank" id="source" width="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>
+				</div>
+				{$advcode.chapter_1.code}
+				<div id="BookText">
+					<if condition="$mychapterdb.cache neq null">
+					{$mychapterdb.cache.content}<present name="mychapterdb.next.sub">-->><p class="to_nextpage"><a href="{:reurl('chapter', $mychapterdb['next'], $maindomain)}" rel="next">本章未完，点击下一页继续阅读</a></p></present>
+					<else />
+					<p class="preload">正在加载中……</p>
+					</if>
+					<if condition="$mychapterdb.nextpage neq null">
+					<p style="text-align:center" class="loadnextpage"><button data-nextpage="{$mychapterdb.nextpage}" data-pagehash="{$mychapterdb.hash}">本章未完，加载下一页>></button></p>
+					</if>
+				</div>
+				<p class="copyright">转码声明：以上内容基于搜索引擎转码技术对网站内容进行转码阅读，仅作介绍宣传，请您支持正版</p>
+				<div class="link">
+					<a id="add-bookcase" href="javascript:void(0)">加入书签</a>
+					<if condition="$mychapterdb.prev neq null"><a href="{:reurl('chapter', $mychapterdb['prev'], $maindomain)}" rel="next"><present name="mychapterdb.prev.sub">上一页<else />上一章</present></a><else /><a href="{$TDK.articleurl}" rel="next">上一章：没有了</a></if>
+					<a href="{$TDK.articleurl}" rel="index">章节列表</a>
+					<if condition="$mychapterdb.next neq null"><a href="{:reurl('chapter', $mychapterdb['next'], $maindomain)}" rel="next"><present name="mychapterdb.next.sub">下一页<else />下一章</present></a><else /><a href="{$TDK.articleurl}" rel="next">下一章：没有了</a></if> 
+					<a id="book-vote" href="javascript:void(0)">投推荐票</a>
+				</div>
+				{$advcode.chapter_2.code}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="inner">
+			<div class="title">
+				<span class="label"></span><em>猜您还喜欢看</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_view_recommend" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_view_recommend2" item="v">
+					<li><span><a href="{$v.cateurl}">[{$v.catename}]</a></span><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.chapter_3.code}</div>
+	<include file="Public/footer" />
+</div>
+<script>
+	var preview_page = <if condition="$mychapterdb.prev neq null">"{:reurl('chapter', $mychapterdb['prev'], $maindomain)}"<else />"{$TDK.articleurl}"</if>;
+	var next_page = <if condition="$mychapterdb.next neq null">"{:reurl('chapter', $mychapterdb['next'], $maindomain)}"<else />"{$TDK.articleurl}"</if>;
+	var index_page = "{$TDK.articleurl}";
+	var article_id = "{$TDK.oid}";
+	var chapter_id = "{$TDK.ocid}";
+	var nextcid = "{$mychapterdb.nextcid}";
+	var prevcid = "{$mychapterdb.prevcid}";
+	var articlename = "{$TDK.articletitle}";
+	var chaptername = "{$mychapterdb.title}";
+	var hash = "{$TDK.eKey}";
+	var localpre = "{:C('PCDOMAIN')}";
+	var preloadhtml = $('#content').html();
+	var sourceurl = "{$mychapterdb.sourceurl}";
+	lastread.set(article_id,chapter_id,articlename,chaptername,'{$TDK.author}','{$TDK.catename}','{$TDK.subid}');
+</script>
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/chapter.js?v{$version}"></script>
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+</body>
+</html>

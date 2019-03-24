@@ -1,0 +1,9 @@
+<div class="ptm-tab">
+	<ul class="ptm-tab-nav">
+		<li <if condition="$cate eq ''and $Think.const.CONTROLLER_NAME eq 'Index' and $Think.const.ACTION_NAME eq 'index'">class="active"</if>><a href="{$TDK.weburl}">首页</a></li>
+		<li class="nav-sort <if condition="$cate neq '' and $cate neq 'top'">active</if>"><a href="{$catelist.all}">分类</a></li>
+		<li <if condition="$cate eq 'top'">class="active"</if>><a href="{$catelist.top}">排行</a></li>
+		<li <if condition="$Think.const.CONTROLLER_NAME eq 'Search'">class="active"</if>><a href="{:U('/home/search')}">搜索</a></li>
+		<li <if condition="$Think.const.ACTION_NAME eq 'bookcase'">class="active"</if>><a href="{:U('/home/index/bookcase')}">书架</a></li>
+	</ul>
+</div>

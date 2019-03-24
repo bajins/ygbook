@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<meta name="MobileOptimized" content="240"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,	minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/style.css" />
+	<script>
+	var article_id = "{$TDK.oid}";
+	var chapter_id = "{$TDK.ocid}";
+	var nextcid = "{$mychapterdb.nextcid}";
+	var prevcid = "{$mychapterdb.prevcid}";
+	var articlename = "{$TDK.articletitle}";
+	var chaptername = "{$mychapterdb.title}";
+	var hash = "{$TDK.eKey}";
+	var preloadhtml = '<p class="preload">正在为您转码……</p>';
+	var localpre = "{:C('PCDOMAIN')}";
+	var sourceurl = "{$mychapterdb.sourceurl}";
+	</script>
+	<script src="__PUBLIC__/{$theme}/js/static.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/common.js?v{$version}"></script>
+	<script src="__PUBLIC__/layer/mobile/layer.js"></script>
+</head>
+<body id="nr_body" class="c_nr">
+<div class="header">
+	<div class="back"><a href="javascript:history.go(-1);">返回</a></div>
+	<div class="logo"><a href="{$TDK.weburl}">{$TDK.articletitle}</a></div>
+	<div class="back_r"><a id="translatelink" style="color:red;" href="javascript:translatePage();" title="点击[繁/简]切换">繁体版</a></div>
+</div>
+<div class="nr_set clearfix">
+	<div id="lightdiv" class="set1" onclick="nr_setbg('light')">关灯</div>
+	<div id="huyandiv" class="set1" onclick="nr_setbg('huyan')">护眼</div>
+	<div class="set2">
+		<div id="fontbig" onclick="nr_setbg('big')">大</div> <div id="fontmiddle" onclick="nr_setbg('middle')" >中</div> <div id="fontsmall" onclick="nr_setbg('small')">小</div>
+	</div>
+	<div class="cc"></div>
+</div>
+<div class="nr_title" id="nr_title">{$mychapterdb.title}</div>
+<div class="nr_page">
+	<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="prev"><a href="javascript:;" id="pt_prev">加入书架</a></td>
+		<td class="mulu"><a href="{$TDK.articleurl}" id="pt_mulu">返回目录</a></td>
+		<td class="next"><a href="{:U('/home/index/bookcase')}" id="pt_next">查看书架</a></td>
+	</table>
+</div>
+{$advcode.chapter_1.code_wap}
+<div id="BookText" class="nr_nr">
+	<div id="nr1">
+		<if condition="$mychapterdb.cache neq null">
+		{$mychapterdb.cache.content}<present name="mychapterdb.next.sub">-->><p class="to_nextpage"><a href="{:reurl('chapter', $mychapterdb['next'], $maindomain)}" rel="next">本章未完，点击下一页继续阅读</a></p></present>
+		<else />
+		<p class="preload"><i class="ptm-iconfont fa fa-spinner fa-spin"></i> 正在为您转码……</p>
+		</if>
+		<if condition="$mychapterdb.nextpage neq null">
+		<p style="text-align:center" class="loadnextpage"><button data-nextpage="{$mychapterdb.nextpage}" data-pagehash="{$mychapterdb.hash}">本章未完，加载下一页>></button></p>
+		</if>
+	</div>
+</div>
+{$advcode.chapter_2.code_wap}
+<div class="nr_page">
+	<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="prev">
+		<if condition="$mychapterdb.prev neq null"><a id="pb_prev" href="{:reurl('chapter', $mychapterdb['prev'], $maindomain)}" rel="next"><present name="mychapterdb.prev.sub">上一页<else />上一章</present></a><else /><a id="pb_prev" href="javascript:alert('已经是第一章了');">上一章</a></if>
+		</td>
+		<td class="mulu"><a id="pb_mulu" href="{$TDK.articleurl}">返回目录</a></td>
+		<td class="next">
+		<if condition="$mychapterdb.next neq null"><a id="pb_next" href="{:reurl('chapter', $mychapterdb['next'], $maindomain)}" rel="next"><present name="mychapterdb.next.sub">下一页<else />下一章</present></a><else /><a id="pb_next" href="javascript:alert('已经是最后一章了');">下一章</a></if>
+		</td>
+	</tr>
+	</table>
+</div>
+{$advcode.chapter_3.code_wap}
+<include file="Public/footer" />
+<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}"></script>
+<script>
+function addmark(){
+	lastread.set(article_id,chapter_id,articlename,chaptername,'{$TDK.author}','{$TDK.catename}','{$TDK.subid}');
+}
+$(function(){
+	$('body').on('tap', function(){
+		addmark();
+	});
+	$('#pt_prev').on('click', function(){
+		addmark();
+		alert('《' + articlename + '》已加入书架');
+	});
+});
+</script>
+<script src="__PUBLIC__/{$theme}/js/chapter.js?v{$version}"></script>
+<script>all();</script>
+</body>
+</html>

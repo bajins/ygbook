@@ -1,0 +1,18 @@
+<script>login();</script>
+<div class="header">
+	<div class="header_logo">
+		<a href="{$TDK.weburl}" title="{$TDK.webname}">{$TDK.webname}</a>
+	</div>
+	<script>panel();</script>
+</div>
+<div class="nav">
+	<ul>
+		<li><a href="{$TDK.weburl}" title="{$TDK.webname}">{$TDK.webname}</a></li>
+		<li><a href="{:U('/home/index/bookcase')}">临时书架</a></li>
+		<foreach name="category" key="key" item="vo">
+		<li><a href="{$vo['url']}">{$vo['name']}</a></li>
+		</foreach>
+		<li><a href="{$catelist.all}">小说书库</a></li>
+		<li><a href="{$catelist.top}">排行榜单</a></li>
+	</ul>
+</div>

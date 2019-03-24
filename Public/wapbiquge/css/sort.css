@@ -1,0 +1,32 @@
+﻿/*content*/
+.content{width:98%;margin-left:5px;margin-top:10px;color:#000}
+.content ul{display:-moz-box;display:-webkit-box;display:box;margin-bottom:10px}
+.content li{text-align:center;-moz-box-flex:1;-webkit-box-flex:1;box-flex:1}
+.content .prev{text-align:left;margin-left:7px}
+.prev a{display:block;text-align:center;padding:10px 5px;background-color:#fff;color:#000;border:1px solid #efefef}
+/* 分页 */
+.listpage{ width:100%; padding:10px 5px 10px 5px; color:#999; display:-webkit-box; box-sizing:border-box;}
+.listpage a{ display:block; margin:0 5px; line-height:30px; border:solid 1px #DDD; text-align:center; -webkit-box-flex:1; background-image: -webkit-linear-gradient( 90deg, rgb(243,243,243) 0%, rgb(255,255,255) 100%);}
+
+.toptab{margin-top:10px;display:-webkit-box;border:1px solid #dfdfdf;border-width:1px 0 1px 0;background:#f2f2f2}
+.toptab span{-webkit-box-flex:1; text-align:center; line-height:40px;display:block;color:#4c4c4c;height:40px;border-right:1px solid #dfdfdf;width:0; overflow:hidden}
+.toptab span:last-child{border-right:0}
+.toptab span.active{color:#000;border-bottom:3px solid #3ba8de; overflow:hidden}
+
+/*临时书架*/
+.bookbox{position:relative;zoom:1;overflow:auto;padding:8px 8px;border-bottom:1px solid #dfdfdf}
+.bookbox::after{visibility: hidden;display:block;font-size:0;content: ' ';clear: both;height:0;}
+.bookbox:hover{background:#f9f9f9}
+.bookbox .bookimg{float:left;margin-right:10px;width:74px;height:98px}
+.bookimg img{width:78px;height:98px}
+.bookinfo{ overflow:hidden;z-index:2}
+.bookbox .bookname{font-size:16px; color:#4c4c4c;height:29px; overflow:hidden; display:-webkit-box;position: relative;}
+.bookbox .bookname div{-webkit-box-flex:1;height: 22px;line-height: 22px;overflow: hidden;}
+.bookbox .bookname .iTit{overflow:hidden;max-width:6em;display: block;height:22px;line-height:22px}
+.bookbox .author,.bookbox .cat{ float:left;color:#8f8f8f;height:24px;font-size:13px}
+.bookbox .update,.bookbox .intro_line{color:#4c4c4c; font-size:13px;line-height:24px;height:24px;overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.bookbox .update span,.bookbox .intro_line span,.bookbox .info span{color:#a8a8a8}
+.bookbox .info{color:#4c4c4c; font-size:13px;line-height:23px;height:auto;}
+.bookbox .delbutton{z-index:999;position: absolute;right: 8px;top: 18px;}
+.bookbox .delbutton a{display:inline-block;width:55px;height:30px;font-size:13px;line-height:30px;border-radius:4px; text-align:center;background:#f2f2f2;color:#4c4c4c;}
+.bookbox .delbutton .del_but{border:1px solid #ff4643;background: none;color: #ff4643;box-sizing:border-box;}

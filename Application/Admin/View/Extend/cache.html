@@ -1,0 +1,73 @@
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">缓存管理</strong></div>
+</div>
+<hr>
+<div class="am-tabs am-margin">
+	<div class="am-tab-panel am-fade am-in am-active">
+		<form class="am-form">
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				系统缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="clearcache('system');" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">thinkphp编译缓存，网站出错时可尝试更新</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				首页相关缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="clearcache('index');" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">首页缓存</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				列表相关缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="clearcache('list');" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">各栏目页面相关缓存</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				指定文章缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="clearcache('article');" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">指定文章信息页、章节列表、静态HTML缓存</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				自动采集缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="clearcache('pick');" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">采集进度缓存，清理后从第一页开始采集</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				静态HTML缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="alert('静态缓存体积较大，请手动清理，位置在Application/Html\n栏目缓存在cate目录，首页缓存是home.html，具体小说缓存在各数字目录下')" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">sitemap缓存</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-6 am-u-md-3 am-text-right">
+				模板缓存
+			</div>
+			<div class="am-u-sm-6 am-u-md-1">
+				<a href="javascript:;" onclick="alert('模板缓存请手动清理，位置在Application/Runtime/Cache\n前台模板缓存是Home目录，后台模板缓存是Admin目录')" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 清除</a>
+			</div>
+			<div class="am-hide-sm-only am-u-md-8">修改模板后需清理模板缓存才能生效</div>
+		</div>
+		</form>
+	</div>
+</div>

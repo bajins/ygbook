@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>临时书架_{$TDK.webname}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" media="screen and (max-width:600px)" href="__PUBLIC__/{$theme}/css/mobile.css" type="text/css" />
+	<script src="__PUBLIC__/{$theme}/js/jquery2.1.4.min.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/user.js"></script>
+	<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}"></script>
+	<script>var view_rule = '{:C('HOME_URL')}{:C('VIEW_RULE')}', chapter_rule = '{:C('HOME_URL')}{:C('CHAPTER_RULE')}', znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="container">
+	<div class="inner">
+		<div class="title"><h3>临时书架 - 看过的小说会自动保存到书架中</h3></div>
+		<div class="details novelslist2">
+			<ul>
+				<li><span class="s1"><b>作品分类</b></span><span class="s2"><b>作品名称</b></span><span class="s3"><b>上次阅读章节</b></span><span class="s4"><b>作者</b></span><span class="s5"><b>操作</b></span><span class="s6"><b>&nbsp;</b></span><span class="s7"><b>&nbsp;</b></span></li>
+				<div class="read_book"></div>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>loadbooker();</script>
+<include file="Public/footer" />
+</body>
+</html>

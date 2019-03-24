@@ -1,0 +1,179 @@
+/* 全局通用
+----------------------------------------------- */
+body {
+	font-family:'Microsoft Yahei', \5b8b\4f53, Arial, Lucida, Verdana, Helvetica, sans-serif;
+	font-size:14px;
+	color:#555;
+	background-color:#F4F4F4;
+	line-height:130%;
+	margin:0;
+	padding:0;
+}
+input,button,textarea,label{
+	font-family:'Microsoft Yahei', \5b8b\4f53, Arial, Lucida, Verdana, Helvetica, sans-serif;
+}
+textarea {
+	outline:none;
+	font-size:12px;
+	line-height:160%;
+}
+p, ul, ol, dl, dt, dd, form, blockquote {
+	margin:0;
+	padding:0;
+}
+ul, ol {
+	list-style:none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:18px;
+	font-weight:normal;
+}
+em, b {
+	font-style:normal;
+	font-weight:normal;
+}
+img {
+	border:0;
+}
+a {
+	text-decoration:none;
+	color:#333333;
+}
+a:hover {
+	text-decoration:underline;
+	color:#C70D0E;
+}
+input, img, select {
+	outline:none;
+	vertical-align:middle;
+	margin:0;
+}
+.clear {
+	clear:both;
+	height:0;
+	line-height:0;
+	font-size:0;
+}
+label {
+	cursor:pointer;
+}
+.fr{
+	float: right;
+}
+/* btn */
+.btn {
+	display:inline;
+	cursor:pointer;
+	background-color:#0072C6;
+	border:0;
+	color:#FFF;
+	padding:8px 20px;
+	font-size:16px;
+	font-weight:bold;
+	text-transform:capitalize;
+	margin-right:15px;
+}
+.btn:hover {
+	color:#FFF;
+	text-decoration:none;
+}
+.btnGray {
+	display:inline;
+	cursor:pointer;
+	background-color:#CCC;
+	border:0;
+	color:#555;
+	padding:8px 20px;
+	font-size:16px;
+	font-weight:bold;
+	text-transform:capitalize;
+	margin-right:15px;
+}
+/* 主要样式
+----------------------------------------------- */
+#wrapper {
+	width:700px;
+	margin:80px auto;
+	background-color:#FFF;
+	border:1px solid #CCC;
+	padding:30px;
+	padding-bottom:50px;
+}
+#wrapper h3 {
+	padding:12px 0;
+	border-bottom: 1px solid #DADADA;
+	margin:12px 0;
+	color:#666;
+}
+.logo {
+	margin-bottom:20px;
+	padding:5px 0;
+	text-align:left;
+}
+/* license */
+.license textarea {
+	border:1px solid #D8D8D8;
+	padding:10px;
+	width:680px;
+	height:290px;
+	resize:none;
+	color:#555;
+	margin-bottom:10px;
+}
+.license .agree {
+	margin:4px 0 20px 0;
+	height:30px;
+}
+.license .agree input, .license .agree b {
+	float:left;
+	margin-right:8px;
+}
+.license .agree input {
+	margin-top:2px;
+}
+/* check */
+.check ul {
+	margin-bottom:30px;
+}
+.check li {
+	padding:5px 0;
+}
+.check .write {
+	color:#0072C6;
+}
+.check .noWrite {
+	color:#FF0000;
+}
+/* setting */
+.setting ul {
+	margin-bottom:30px;
+}
+.setting strong {
+	color:#333;
+}
+.setting td {
+	padding:8px 0;
+}
+.setting .textInput {
+	width:200px;
+	font-size:15px;
+	padding:5px;
+	border:1px #DFDFDF solid;
+	color:#333;
+}
+.setting .cue {
+	border:1px solid #E6DB55;
+	padding:8px;
+	margin:5px 0 15px;
+	background-color:#FFFFE0;
+}
+/* finish */
+.finish ul {
+	margin-bottom:30px;
+}
+.finish .success {
+	margin-bottom:15px;
+}
+.finish td {
+	padding:8px 0;
+}

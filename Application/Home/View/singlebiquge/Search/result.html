@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>小说搜索_{$TDK.webname}</title>
+	<link rel="canonical" href="{$TDK.weburl}"/>
+	<meta name="applicable-device" content="pc">
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css?v{$version}" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/header.js?v{$version}"></script>
+	<script>var znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div id="main">
+		<div id="hotcontent">
+			<div class="lll">
+				<h2>{$TDK.webname}小说周榜</h2>
+				<ul>
+				<foreach name="dataarea_list.pc_week_6" item="v">
+				<li class="item-cover">
+					<a href="{$v['rewriteurl']}" title="{$v['title']}">
+						<img {$comset.src}="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" />
+						<h3>{$v['title']}</h3>
+					</a>
+				</li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div id="hotcontent">
+			<div class="lll">
+				<h2>搜索：“<font color=red>{$q}</font>”相关的小说</h2>
+				<ul>
+				<foreach name="articlelist" item="v">
+				<li class="item-cover">
+					<a href="{$v['rewriteurl']}" title="{$v['title']}">
+						<img {$comset.src}="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" />
+						<h3>{$v['title']}</h3>
+					</a>
+				</li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<include file="Public/footer" />
+</div>
+</body>
+</html>

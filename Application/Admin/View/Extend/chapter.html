@@ -1,0 +1,95 @@
+<div class="am-cf am-padding am-padding-bottom-0 am-g">
+	<div class="am-fl am-cf am-u-md-11"><strong class="am-text-primary am-text-lg">{$articledb.title}</strong> / <small>章节列表</small></div>
+	<div class="am-fr am-u-md-1">
+		<a class="am-btn am-btn-success am-btn-sm" href="{:U('chapter', array('action' => 'add', 'id' => $id))}" target="_blank">
+			<i class="am-icon-plus"></i> 添加章节
+		</a>
+	</div>
+</div>
+<hr>
+<div class="am-alert am-alert-warning" data-am-alert>
+	<button type="button" class="am-close">&times;</button>
+	<p>新增章节只能新增到最后一章后面！删除章节会导致章节错乱，必须清空本书已有章节内容！！！</p>
+</div>
+<if condition="$action eq 'list'">
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+				<tr>
+					<th class="table-name">ID</th>
+					<th class="table-title">标题</th>
+					<th class="table-set">操作</th>
+				</tr>
+			</thead>
+			<foreach name="chapterlist" item="vo" key="key">
+			<if condition="$key eq 201">
+			<tr class="tg">
+				<td colspan="3">已省略……</td>
+			</tr>
+			</if>
+			<tr <if condition="($key gt 200) AND ($key lt count($chapterlist) - 200)">class="tg" style="display:none"</if>>
+				<td>{$key}</td>
+				<td>{$vo.title}</td>
+				<td>
+					<div class="am-btn-toolbar">
+						<div class="am-btn-group am-btn-group-xs">
+							<a href="{:U('chapter',array('action'=>'edit','id'=>$id,'cid'=>$key))}" class="am-btn am-btn-success am-btn-xs" target="_blank"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+							<a onclick="return confirm('删除章节将导致本书已采集章节内容被清空，是否确认删除章节？？？')" href="{:U('chapter',array('action'=>'delete','id'=>$id,'cid'=>$key))}" class="am-btn am-btn-warning am-btn-xs"><span class="am-icon-trash-o"></span> 删除</a>
+						</div>
+					</div>
+				</td>
+			</tr>
+			</foreach>
+		</table>
+	</div>
+	<div class="am-margin">
+		<button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="$('tr.tg').toggle();">展开/收起全部章节>></button>
+	</div>
+</div>
+<elseif condition="$action eq 'add' or $action eq 'edit'" />
+<form class="am-form" action="__ACTION__" method="post">
+<input type="hidden" name="action" value="{$action}">
+<input type="hidden" name="step" value="save">
+<input type="hidden" name="id" value="{$id}">
+<input type="hidden" name="cid" value="{$cid}">
+<div class="am-g">
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			章节标题
+		</div>
+		<div class="am-u-sm-8 am-u-md-6">
+			<input type="text" class="am-input-sm" name="title" value="{$chapter.title}">
+		</div>
+		<div class="am-hide-sm-only am-u-md-4"></div>
+	</div>
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			章节源网址
+		</div>
+		<div class="am-u-sm-8 am-u-md-6">
+			<input type="text" class="am-input-sm" name="link" value="{$chapter.link}">
+		</div>
+		<div class="am-hide-sm-only am-u-md-4"></div>
+	</div>
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			章节内容<br>支持html代码，请以
+		</div>
+		<div class="am-u-sm-8 am-u-md-6">
+			<script id="ueditor" name="content" type="text/plain">{$chapter.content}</script>
+		</div>
+		<div class="am-hide-sm-only am-u-md-4"></div>
+	</div>
+	<div class="am-margin">
+		<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+	</div>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+	<script type="text/javascript">
+		UE.getEditor('ueditor');
+	</script>
+</div>
+</form>
+</div>
+</if>

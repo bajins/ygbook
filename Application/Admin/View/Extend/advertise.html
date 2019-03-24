@@ -1,0 +1,98 @@
+<style type="text/css">
+.extend_line{
+	position: relative;
+	margin-top: 10px;
+}
+.extend_line .extend_pre{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	font-style: normal;
+	color: #999;
+	font-size: 1.4rem;
+}
+.extend_line .extend_input{
+	text-indent: 50px;
+}
+</style>
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">广告管理</strong></div>
+</div>
+<hr>
+<div class="am-margin">
+	<form class="am-form" action="__ACTION__" method="post" target="_self">
+	<input type="hidden" name="action" value="save"/>
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			广告位ID
+		</div>
+		<div class="am-u-sm-8 am-u-md-3">
+			PC端代码
+		</div>
+		<div class="am-u-sm-8 am-u-md-3">
+			WAP端代码
+		</div>
+		<div class="am-hide-sm-only am-u-md-4">支持html代码</div>
+	</div>
+	<foreach name="advcode" key="key" item="vo">
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			预置广告位：{$vo.id}
+			<input name="id[]" type="hidden" class="am-input-sm" value="{$vo.id}">
+			<div class="extend_line">
+				<input name="title[]" type="text" class="am-input-sm" value="{$vo.title}">
+			</div>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="code[]">{$vo.code}</textarea>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="code_wap[]">{$vo.code_wap}</textarea>
+		</div>
+		<div class="am-hide-sm-only am-u-md-4">通过&#123;$advcode.{$vo.id}.code&#125;、&#123;$advcode.{$vo.id}.code_wap&#125;调用</div>
+	</div>
+	<hr>
+	</foreach>
+	<foreach name="advcode_extend" key="key" item="vo">
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			自定义广告位：{$vo.id}
+			<input name="eid[]" type="hidden" class="am-input-sm" value="{$vo.id}">
+			<div class="extend_line">
+				<input name="etitle[]" type="text" class="am-input-sm" value="{$vo.title}">
+			</div>
+			<label>删除请打勾 <input type="checkbox" name="edel[]" value="1"></label>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="ecode[]">{$vo.code}</textarea>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="ecode_wap[]">{$vo.code_wap}</textarea>
+		</div>
+		<div class="am-hide-sm-only am-u-md-4">通过&#123;$advcode.{$vo.id}.code&#125;、&#123;$advcode.{$vo.id}.code_wap&#125;调用</div>
+	</div>
+	<hr>
+	</foreach>
+	<div class="am-g am-margin-top">
+		<div class="am-u-sm-4 am-u-md-2 am-text-right">
+			新增广告位ID：
+			<div class="extend_line">
+				<em class="extend_pre">extend_</em><input name="nid[]" type="text" class="extend_input am-input-sm" value="">
+			</div>
+			<div class="extend_line">
+				<input name="ntitle[]" type="text" class="am-input-sm" value="广告位名称">
+			</div>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="ncode[]"></textarea>
+		</div>
+		<div class="am-u-sm-4 am-u-md-3">
+			<textarea class="am-input-sm" cols="30" rows="10" name="ncode_wap[]"></textarea>
+		</div>
+		<div class="am-hide-sm-only am-u-md-4">支持html代码</div>
+	</div>
+	<div class="am-margin">
+		<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+	</div>
+	</form>
+</div>

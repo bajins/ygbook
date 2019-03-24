@@ -1,0 +1,55 @@
+<style type="text/css">
+    #getupdate {
+        color: orange;
+        cursor: pointer;
+        border-bottom: 1px dashed orange;
+        font-style: normal;
+    }
+</style>
+<script type="text/javascript">
+    $(function() {
+        $('#getupdate').on('click', function() {
+            var upw = window.open();
+            $.get('{:U('
+                index ', array('
+                action ' => '
+                getupdate '))}',
+                function(data) {
+                    if (data) {
+                        if (confirm('检测到新版本，是否进入下载页面？') == true) {
+                            upw.location.href = data;
+                        } else {
+                            upw.close();
+                        }
+                    } else {
+                        alert('已经是最新版本了');
+                        upw.close();
+                    }
+                });
+        });
+    });
+</script>
+<div class="am-cf am-padding am-padding-bottom-0">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
+</div>
+<hr />
+<ul class="am-avg-sm-1 am-avg-md-5 am-margin am-padding am-text-center admin-content-list ">
+    <li><a href="{:U('article')}" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>总文章数<br/>{$counts.article}</a></li>
+    <li><a href="{:U('article')}" class="am-text-warning"><span class="am-icon-btn am-icon-file-text"></span><br/>今日新增<br/>{$counts.article_day}</a></li>
+    <li><a href="{:U('article')}" class="am-text-warning"><span class="am-icon-btn am-icon-file-text"></span><br/>今日更新<br/>{$counts.articleupdate_day}</a></li>
+    <li><a href="{:U('extend/spider')}" class="am-text-danger"><span class="am-icon-btn am-icon-bug"></span><br/>今日蜘蛛<br/>{$counts.spider_day}</a></li>
+    <li><a href="{:U('extend/spider')}" class="am-text-secondary"><span class="am-icon-btn am-icon-bug"></span><br/>昨日蜘蛛<br/>{$counts.spider_lastday}</a></li>
+</ul>
+<div class="am-margin">
+    <div class="am-panel am-panel-default">
+        <div class="am-panel-hd am-cf">系统信息</div>
+        <div class="am-panel-bd">
+            <p>当前版本：v{$serverinfo.ver} <em id="getupdate">检测新版本</em></p>
+            <p>操作系统：{$serverinfo.os.0}</p>
+            <p>解译引擎：{$serverinfo.soft}</p>
+            <p>PHP版本：{$serverinfo.php}</p>
+            <p>导航站：<a href="https://woytu.com" target="_blank">woytu.com</a></p>
+            <p>操作：<a href='/index.php?s=/Admin/Index/pick/action/runpick/nownum/1/maxnum/99999999999999.html' target='_blank'>无限采集</a></p>
+        </div>
+    </div>
+</div>

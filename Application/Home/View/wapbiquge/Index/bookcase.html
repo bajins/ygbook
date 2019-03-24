@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+	<title>临时书架_{$TDK.webname}<</title>
+	<meta name="keywords" content="临时书架_{$TDK.webname}" />
+	<meta name="description" content="临时书架_{$TDK.webname}" />
+	<meta name="MobileOptimized" content="240"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,	minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/mulu.css" />
+	<script>var view_rule = '{:C('HOME_URL')}{:C('VIEW_RULE')}', chapter_rule = '{:C('HOME_URL')}{:C('CHAPTER_RULE')}';</script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="article">
+	<div id="intro" class="intro">
+		临时书架/浏览记录
+	</div>
+	<div class="block bookcase">
+		<div class="read_book"></div>
+	</div>
+</div>
+<include file="Public/footer" />
+<script src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}"></script>
+<script>loadbooker();</script>
+</body>
+</html>

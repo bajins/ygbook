@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<meta name="MobileOptimized" content="240"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,	minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/base.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/mulu.css?v{$version}" />
+</head>
+<body>
+<include file="Public/header" />
+<div class="article">
+	<h2 class="title"><span><a href="{$TDK.canonicalurl}">{$TDK.webname}</a>本周热门</span></h2>
+	<foreach name="dataarea_list.wap_week6" item="v">
+	<div class="block">
+		<div class="block_img"><a href="{$v.rewriteurl}" title="{$v.title}"><img height=100 width=80 {$comset.src}="{$v.thumb}" onerror="this.src='__PUBLIC__/images/nocover.jpg'"/></a></div>
+		<div class="block_txt">
+			<p><a href="{$v.rewriteurl}"><h2>{$v.title}</h2></a></p>
+			<p>作者：<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></p>
+			<p><a href="{$v.rewriteurl}">{$v.description}...</a></p>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	</foreach>
+</div>
+{$advcode.index_1.code_wap}
+<div class="article">
+	<h2 class="title"><span>{:getcate('xuanhuan')}</span><a href="{:getcate('xuanhuan', 'href')}">更多...</a></h2>
+	<div class="block">
+		<ul>
+			<foreach name="dataarea_list.wap_index_xuanhuan" item="v">
+			<li><a href="{$v.rewriteurl}" class="blue" title="{$v.title}">{$v.title}</a>/<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+<div class="article">
+	<h2 class="title"><span>{:getcate('xiuzhen')}</span><a href="{:getcate('xiuzhen', 'href')}">更多...</a></h2>
+	<div class="block">
+		<ul>
+			<foreach name="dataarea_list.wap_index_xiuzhen" item="v">
+			<li><a href="{$v.rewriteurl}" class="blue" title="{$v.title}">{$v.title}</a>/<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+{$advcode.index_2.code_wap}
+<div class="article">
+	<h2 class="title"><span>{:getcate('dushi')}</span><a href="{:getcate('dushi', 'href')}">更多...</a></h2>
+	<div class="block">
+		<ul>
+			<foreach name="dataarea_list.wap_index_dushi" item="v">
+			<li><a href="{$v.rewriteurl}" class="blue" title="{$v.title}">{$v.title}</a>/<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+<div class="article">
+	<h2 class="title"><span>{:getcate('wangyou')}</span><a href="{:getcate('wangyou', 'href')}">更多...</a></h2>
+	<div class="block">
+		<ul>
+			<foreach name="dataarea_list.wap_index_wangyou" item="v">
+			<li><a href="{$v.rewriteurl}" class="blue" title="{$v.title}">{$v.title}</a>/<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+<div class="article">
+	<h2 class="title"><span>{:getcate('nvpin')}</span><a href="{:getcate('nvpin', 'href')}">更多...</a></h2>
+	<div class="block">
+		<ul>
+			<foreach name="dataarea_list.wap_index_nvpin" item="v">
+			<li><a href="{$v.rewriteurl}" class="blue" title="{$v.title}">{$v.title}</a>/<a href="{:reurl('author', $v)}" title="{$v.author}">{$v.author}</a></li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+{$advcode.index_3.code_wap}
+<div class="article">
+	<h2 class="title"><span><a href="{$TDK.canonicalurl}">{$TDK.webname}</a>友情链接</span></h2>
+	<div class="block friendlink">
+		<foreach name="randseolist" item="v3">
+		<a href="{$v3['rewriteurl']}" title="{$v3['sitename']}" target="_blank">{$v3['sitename']}</a> &nbsp;
+		</foreach>
+	</div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

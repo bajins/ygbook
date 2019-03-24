@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台登录</title>
+    <link href="__PUBLIC__/css/login_v1.css" type="text/css" rel="stylesheet">
+    <script>
+        function checklogin() {
+            var adminname = document.getElementById('adminname');
+            var password = document.getElementById('password');
+            if (!adminname.value || !password.value) {
+                alert('用户名或密码不能为空！');
+                if (!adminname.value) {
+                    adminname.focus();
+                } else {
+                    password.focus();
+                }
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login">
+        <div class="message">YGBOOK 管理登录</div>
+        <div id="darkbannerwrap"></div>
+        <form action="__ACTION__" method="post" onsubmit="return checklogin();">
+            <input type="hidden" name="action" value="login" />
+            <input name="action" value="login" type="hidden">
+            <input id="adminname" name="adminname" placeholder="用户名" required="" type="text">
+            <hr class="hr15">
+            <input id="password" name="password" placeholder="密码" required="" type="password">
+            <hr class="hr15">
+            <input value="登录" class="btn" type="submit">
+            <hr class="hr15">
+            <a href="/" class="btn">网站首页</a>
+            <hr class="hr20">
+        </form>
+    </div>
+    <div class="copyright">©
+        <script>
+            document.write(new Date().getFullYear())
+        </script> YGBOOK Inc.</div>
+</body>
+
+</html>

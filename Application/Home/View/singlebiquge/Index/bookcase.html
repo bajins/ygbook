@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>临时书架_{$TDK.webname}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<meta name="applicable-device" content="pc">
+	<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css?v{$version}" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/header.js?v{$version}"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/bookcase.js?v{$version}"></script>
+	<script>var view_rule = '{:C('HOME_URL')}{:C('VIEW_RULE')}', chapter_rule = '{:C('HOME_URL')}{:C('CHAPTER_RULE')}', znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div id="main">
+		<div class="novelslist2">
+			<h2>临时书架 - 用户浏览过的小说会自动保存到书架中（只限同一电脑）</h2>
+			<ul>
+				<li><span class="s1"><b>作品分类</b></span><span class="s2"><b>作品名称</b></span><span class="s3"><b>上次阅读章节</b></span><span class="s4"><b>作者</b></span><span class="s5"><b>操作</b></span><span class="s6"><b>&nbsp;</b></span><span class="s7"><b>&nbsp;</b></span></li>
+				<div class="read_book"></div>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script>loadbooker();</script>
+	<include file="Public/footer" />
+</div>
+</body>
+</html>

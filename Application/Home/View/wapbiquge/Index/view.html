@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+	<title>{$TDK.title}<</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<meta name="MobileOptimized" content="240"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,	minimum-scale=1.0, maximum-scale=1.0" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/base.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/mulu.css?v{$version}" />
+	<script src="__PUBLIC__/{$theme}/js/static.js?v{$version}"></script>
+	<script src="__PUBLIC__/layer/mobile/layer.js"></script>
+	<script>var bookid = '{$TDK.oid}', hash = '{$TDK.hash}', index_rule = '{:C('ID_RULE')}', cindex_rule = '{:C('CID_RULE')}';</script>
+</head>
+<body id="top">
+<include file="Public/header" />
+<div class="cover">
+	<div class="block clearfix">
+		<div class="block_img2"><img alt="{$articledb.title}" src="{$articledb.thumb}" width='85' height='100' onerror="this.src='__PUBLIC__/images/nocover.jpg'"/></div>
+		<div class="block_txt2">
+		<p><h1>{$articledb.title}</h1></P>
+		<p>作者：<a href="{:reurl('author', $articledb)}" title="{$articledb.author}">{$articledb.author}</a></p>
+		<p>分类：<a href="{$TDK.cateurl}">{$articledb.catename}</a></p>
+		<p>状态：<if condition="$articledb['full'] eq 0">连载中<else />已完成</if></p>
+		<p>更新：{$articledb.time}</p>
+		</div>
+	</div>
+	{$advcode.view_1.code_wap}
+	<div class="ablum_read clearfix">
+		<ul>
+			<li><a href="{$articledb.firstchapterurl}">开始阅读</a></li>
+			<li><a href="{:U('/home/index/bookcase')}" rel="nofollow">查看书架</a></li>
+			<li><a href="#mychapter">查看目录</a></li>
+		</ul>
+	</div>
+	<div class="intro">{$articledb.title}小说简介</div>
+	<div class="intro_info" id="intro">{$articledb.description}</div>
+	<div class="intro">{$articledb.title}最新12章节<span class="right loadingtip">更新中…</span></div>
+	<ul class="chapter" id="newchaperlist">
+		<foreach name="newchaperlist" item="v2">
+		<li>
+			<a href="{:reurl('chapter', $v2, $maindomain)}" title="{$articledb.title} {$v2.title}">{$v2.title}</a>
+		</li>
+		</foreach>
+	</ul>
+	{$advcode.view_2.code_wap}
+	<div id="mychapter">
+		<div class="intro">{$articledb.title}章节列表<span class="right">50章/页</span></div>
+		<ul class="chapter" id="chapterlist">
+			<foreach name="chapterdb" item="v3">
+			<li>
+				<a href="{:reurl('chapter', $v3, $maindomain)}" title="{$articledb.title} {$v3.title}">{$v3.title}</a>
+			</li>
+			</foreach>
+		</ul>
+		<div class="chapter_page" id="pages">
+			<ul>
+				<li><a href="javascript:;" rel="prevpage">&laquo; 上一页</a></li>
+				<li class="current"><a href="javascript:;" rel="chapterstat"><select id="cpage"></select>/共<em>1</em>页</a></li>
+				<li><a href="javascript:;" rel="nextpage">下一页 &raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="intro center" id="bottom"><a href="#top" style="color:Red;">回到顶部↑</a></div>
+</div>
+{$advcode.view_3.code_wap}
+<script id="chapterhtml" type="text/html">
+	<li>
+		<a href="{:C('HOME_URL')}{:C('CHAPTER_RULE')}">{title}</a>
+	</li>
+</script>
+<include file="Public/footer" />
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/base.js?v{$version}"></script>
+</body>
+</html>

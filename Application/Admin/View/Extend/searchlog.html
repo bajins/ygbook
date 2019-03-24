@@ -1,0 +1,36 @@
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">搜素记录</strong></div>
+</div>
+<hr>
+
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+			 <tr>
+					<th class="table-id am-hide-sm-only am-hide-sm-only">ID</th>
+					<th class="table-title">搜索词</th>
+					<th class="table-type">次数</th>
+					<th class="table-author">结果</th>
+					<th class="table-author">IP</th>
+					<th class="table-date am-hide-sm-only">搜索时间</th>
+				</tr>
+			</thead>
+			<foreach name="searchloglist" item="vo">
+			<tr>
+				<td class="am-hide-sm-only">{$vo.id}</td>
+				<td>{$vo.searchword}</td>
+				<td>{$vo.num}</td>
+				<td><if condition="$vo['hasresult'] gt 0"><font color=green>有</font><else /><font color=red>无</font></if></td>
+				<td class="am-hide-sm-only">{$vo.ip}</td>
+				<td class="am-hide-sm-only">{$vo.dateline|date='Y-m-d H:i',###}</td>
+			</tr>
+			</foreach>
+		</table>
+		<div class="am-cf">
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+	</div>
+</div>

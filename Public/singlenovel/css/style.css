@@ -1,0 +1,822 @@
+/*
+
+Theme Name: Novel
+Theme URI: http://ituibar.com/
+Description: This is my theme for more than one Novel site.
+Version: 1.0
+Author: Era
+Author URI: http://ituibar.com/
+
+*/
+
+/* reset.css */
+html {margin:0;padding:0;border:0;}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section {display:block;}
+body {line-height:1.5;background:white;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;float:none !important;}
+table, th, td {vertical-align:middle;}
+blockquote:before, blockquote:after, q:before, q:after {content:'';}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+:focus {outline:0;}
+
+/* forms.css */
+/*  base : forms
+/* ------------------------------------ */
+input, textarea, button, select, label { font-family: inherit; }
+input,
+textarea,
+button,
+select,
+label { font-size: 14px; }
+input::-moz-focus-inner,
+button::-moz-focus-inner { border: 0; padding: 0; }
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="submit"],
+button,
+textarea { margin: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 0; border-radius: 0; }
+input,
+textarea,
+button { -moz-appearance: none; -webkit-appearance: none; -moz-transition: all .2s ease; -webkit-transition: all .2s ease; transition: all .2s ease; }
+input[type="checkbox"] { -moz-appearance: checkbox; -webkit-appearance: checkbox; }
+input[type="radio"] { -moz-appearance: radio; -webkit-appearance: radio; }
+label { font-weight: 600; color: #444; }
+input[type="text"],
+input[type="url"],
+input[type="password"],
+input[type="email"],
+textarea { background: #fff; border: 1px solid #ddd; color: #777; display: inline-block; max-width: 100%; outline: none; padding: 8px 8px; }
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus { border-color: #ccc; color: #444; -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1); box-shadow: 0 0 3px rgba(0,0,0,0.1); }
+label .required { color: #3b8dbd; }
+input[type="submit"],
+button[type="submit"] { background: #14b394; color: #fff; padding: 7px 14px; display: inline-block; border: none; cursor: pointer; -webkit-border-radius: 3px; border-radius: 3px; }
+input[type="submit"]:hover,
+button[type="submit"]:hover { background: #444; }
+
+/** style start **/
+body {
+background:#f5f5f5;
+color: #333;
+font: 14px/1.65 Arial, Helvetica, sans-serif;
+}
+.clear {clear:both;}
+h1, h2, h3, h4, h5, h6,dt {
+font-size: 14px;
+margin-bottom:0;
+}
+a {
+color: #333;
+text-decoration: none;
+outline: none;
+}
+a:hover {
+color: #f60;
+text-decoration: underline;
+}
+b,em{
+font-weight: normal;
+font-style: normal;
+}
+/**header**/
+#topbar {
+min-height: 32px;
+*height:32px;
+line-height: 32px;
+border-bottom: 1px solid #2f885b;
+background: #14b394;
+color: #fff;
+overflow: hidden;
+padding: 0 10px;
+}
+#topbar .share {
+float:left;
+padding-left: 20px;
+background: url(../images/star.png) no-repeat 0 8px;
+}
+#topbar .trans{
+	float: right;
+}
+.share em{
+float:left;
+height: 32px;
+line-height: 32px;
+overflow: hidden;
+}
+.bdsharebuttonbox,.bdsharebuttonbox a{
+float:left;
+}
+.hd{
+max-width:1080px;
+*width:1080px;
+margin: 0 auto;
+position: relative;
+clear: both;
+}
+#headbar {
+height: 90px;
+}
+.logo {
+position: absolute;
+width: 210px;
+height: 60px;
+top: 18px;
+left: 0;
+}
+.logo a {
+display: block;
+height: 60px;
+text-indent: -999em;
+overflow: hidden;
+background: url(../images/logo.png) no-repeat;
+}
+#head-plus {
+height: 80px;
+top: 10px;
+right: 0;
+position: absolute;
+}
+#head-plus li {
+width: 48px;
+height: 48px;
+float: left;
+text-align: center;
+padding: 13px 0 0 3px;
+overflow: hidden;
+}
+#head-plus li a:hover {
+color: #fff;
+text-decoration: none;
+border-color: #f60;
+background: #ff9e13;
+}
+#head-plus li a {
+width: 46px;
+height: 26px;
+padding: 10px 0;
+overflow: hidden;
+display: block;
+color: #666;
+line-height: 14px;
+background-color: #eee;
+border: 1px solid #e7e7e7;
+border-radius: 25px;
+-webkit-transition: all 0.3s ease 0s;
+transition: all 0.3s ease 0s;
+}
+#header .nav{
+	border: none;
+	background: #ff9a10;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	overflow: hidden;
+}
+#header .nav li{
+	float: left;
+	border-right: 1px solid #ffaf42;
+}
+#header .nav li:last-child{
+	border: none;
+}
+#header .nav li.current a{
+	background: #d07800;
+	position: relative;
+}
+#header .nav li a{
+	display: block;
+	color: #fff;
+	padding: 0 20px;
+	font-size: 14px;
+}
+#header .nav li a:hover{
+	background: #ffaf42;
+	text-decoration: none;
+}
+/**layout**/
+.container {
+max-width: 1080px;
+*width:1080px;
+margin: 0 auto 10px;
+border: 1px solid #ddd;
+background: #fcfcfc;
+clear: both;
+overflow: hidden;
+}
+.inner {
+clear: both;
+overflow: hidden;
+}
+.title {
+height: 40px;
+line-height: 40px;
+background-color: #fcfcfc;
+font-size: 16px;
+font-weight: bold;
+padding: 0 15px;
+border-top: 2px solid #14b394;
+border-bottom: 1px solid #eee;
+overflow: hidden;
+}
+.details {
+padding: 0 15px;
+}
+.item-img {
+width: 49%;
+padding: 8px 1% 8px 0;
+height: 139px;
+float: left;
+overflow: hidden;
+}
+.item-img img {
+float: left;
+width: 108px;
+height: 133px;
+padding: 2px;
+border: 1px solid #ddd;
+margin-right: 10px;
+display: inline;
+}
+.item-img h2 {
+line-height: 25px;
+font-size: 14px;
+font-weight: bold;
+}
+.item-img h2 a {
+color: #14b394;
+}
+.item-img p {
+line-height: 20px;
+color: gray;
+overflow: hidden;
+}
+.item-qb li {
+width: 33.3%;
+float: left;
+color: gray;
+line-height: 32px;
+border-bottom: 1px dotted #ddd;
+overflow: hidden;
+white-space: nowrap;
+}
+/*封面*/
+.tuijian{
+text-align:center;
+}
+.tuijian a{
+color: #6F78A7;
+font-weight: 700;
+}
+.bookinfo .tuijian {
+text-align:left;
+}
+.bookinfo .bimg{
+float: left;
+width: 15%;
+margin-right: 2%;
+}
+.bookinfo .bimg img{
+display: block;
+width: 100%;
+}
+.bookinfo .bextra{
+float: right;
+width: 83%;
+}
+.bookinfo {
+padding: 15px;
+background: #fff;
+border-bottom: 1px solid #ddd;
+text-align: center;
+}
+.bookinfo p{
+margin:0;
+text-align:left;
+}
+.btitle{
+overflow:auto;
+height:100%;
+}
+.btitle h1 {
+font-size: 30px;
+font-weight: bold;
+color: #14b394;
+float: left;
+padding-right:20px;
+}
+.btitle a{
+color:#14b394;
+}
+.btitle em {
+padding: 18px 0 0;
+color: #999;
+float: left;
+}
+.infobar{
+	border-top: 1px dotted #ddd;
+	border-bottom: 1px dotted #ddd;
+}
+.stats {
+clear: both;
+line-height: 32px;
+color: #999;
+}
+.fl {
+float: left;
+}
+.status{
+float:right;
+margin-top:7px;
+text-align: left;
+}
+.status em{
+	color: #999;
+}
+.intro {
+clear: both;
+line-height: 24px;
+text-align: left;
+color: #999;
+margin: 10px 0;
+}
+.intro b{
+color:#333;
+}
+#content {
+width:73%;
+*width:73%;
+border-right: 1px solid #ddd;
+float: left;
+overflow: hidden;
+}
+#sidebar{
+width: 26%;
+*width:26%;
+float: right;
+overflow: hidden;
+}
+#sidebar .title h3{
+height: 38px;
+line-height: 38px;
+border-bottom: none;
+background: #fcfcfc;
+color: #f60;
+}
+.item-list li, #sidebar ul li {
+height: 33px;
+line-height: 33px;
+border-top: 1px dotted #ddd;
+color: gray;
+overflow: hidden;
+white-space: nowrap;
+}
+/**布局**/
+.chapterlist dt{
+text-align:center;
+}
+.chapterlist dd {
+width: 33.3%;
+height: 32px;
+line-height: 32px;
+float: left;
+border-top: 1px solid #eee;
+overflow: hidden;
+white-space: nowrap;
+}
+.cate dt {
+border-bottom: 1px solid #eee;
+clear: both;
+}
+.cate dd{
+float: left;
+border-top: none;
+border-bottom: 1px solid #eee;
+}
+dd.left{
+float:left;
+}
+.crumbs {
+max-width: 1070px;
+*width:1070px;
+margin: 0 auto 5px;
+border: 1px solid #ddd;
+background: #fcfcfc;
+height: 30px;
+line-height: 30px;
+padding: 0 5px;
+color: #bbb;
+overflow: hidden;
+}
+/*content*/
+.bookset{
+border-bottom: 1px solid #ddd;
+background: #fff;
+}
+.readSet {
+padding: 3px;
+clear: both;
+line-height: 20px;
+max-width: 700px;
+*width:700px;
+margin: auto;
+}
+.readSet .rc {
+color: #333333;
+float: left;
+padding-left: 20px;
+}
+.readSet a.ra {
+border: 1px solid #cccccc;
+display: block;
+width: 16px;
+height: 16px;
+float: left;
+margin-left: 6px;
+overflow: hidden;
+}
+.readSet .rt {
+padding: 0px 5px;
+}
+.chapterlist {
+padding: 0 15px 15px;
+clear: both;
+border-top: 2px solid #14b394;
+}
+.chapterlist .title{
+border: none;
+}
+.article .inner {
+background: #e7f4fe;
+}
+.article p{
+margin-bottom:1.5em;
+text-indent:2em;
+}
+.article h1 {
+height: 40px;
+line-height: 40px;
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+padding-top: 20px;
+}
+.article .xb {
+border-bottom: 1px dotted #ccc;
+border-top: none;
+}
+.article .link a {
+margin: 0 10px;
+color: #14b394;
+}
+.article #BookText {
+clear: both;
+line-height: 180%;
+font-size: 20px;
+padding: 5px 50px;
+font-family: "微软雅黑",Arial,Helvetica;
+}
+.article .link {
+border-top: 1px dotted #ccc;
+text-align: center;
+line-height: 36px;
+color: gray;
+clear: both;
+}
+h4 a {
+color: #956839;
+}
+/*最近更新列表*/
+ul.gengxin{
+margin: 0;
+padding: 0;
+}
+ul.gengxin li{
+padding-top: 9px;
+text-align: right;
+overflow: hidden;
+border-top: 1px dotted #d7d7d7;
+clear: both;
+*height:24px;
+}
+.col1,.col2,.col3,.col4{
+display: inline-block;
+vertical-align: top;
+}
+.col1{
+padding: 0 8px 0 5px;
+}
+.col1 a{
+color:#000;
+}
+.col1,.col2{
+float: left;
+text-align: left;
+}
+span.col2{
+max-width: 250px;
+height: 24px;
+}
+.col3,.col4{
+text-align: right;
+color:#B3B3B3;
+margin-right: 5px;
+}
+span.col3{
+text-align: left;
+}
+/** 广告 **/
+.ads{
+overflow:hidden;
+text-align: center;
+border:none;
+background:none;
+}
+/** footer**/
+#footer {
+border-top: 2px solid #2d2d2d;
+background: #ececec;
+line-height: 24px;
+text-align: center;
+padding: 10px 0 30px;
+color: #999;
+clear: both;
+}
+.links li{
+*display:inline;
+}
+.links a {
+display: block;
+float: left;
+margin: 8px 10px;
+}
+/*小说阅读页翻页导航 */
+.pagenavitop{
+text-align: center;
+}
+.pagenavitop a,.pagenavitop span{
+margin-right: 50px;
+color: red;
+}
+.pagenavi {
+text-align:center;
+margin-bottom: 15px;
+margin-top:15px;
+}
+.pagenavi a,.pagenavi span{
+display:inline-block;
+background:#4D525D;
+border-radius:3px;
+width:64px;
+height:24px;
+color:#E8ECF1;
+font-size:12px;
+line-height:24px;
+margin:0 10px 0 5px;
+padding:2px 0;
+vertical-align:middle;
+}
+.pagenavi a:hover{
+text-decoration:underline;
+}
+
+/**评论**/
+.pinglun{
+padding:0 5px;
+}
+.jcpl{
+margin: 5px 0;
+font-size: 16px;
+}
+.comments-template{
+margin-bottom:5px;
+padding: 3px;
+}
+ol,li{
+list-style:none;
+margin: 0;
+}
+.author_box p{
+margin-bottom: 8px;
+margin-left:46px;
+}
+.comments-template ul{
+margin:0;
+}
+.comments-template .comment{
+position:relative;
+}
+.comments-template  .children .comment{
+margin-left:8px;
+}
+.thread-odd{
+background:#f7f7f7;
+border-bottom:1px solid #ddd;
+}
+.thread-even{
+background:#fff;
+border-bottom:1px solid #ddd;
+}
+.comments-template h3 span{
+color:#555;
+}
+.comment-author{
+padding-top:5px;
+}
+.floor{
+color: #333;
+}
+.datetime{
+color:#B2B2B2;}
+.reply{
+float:right;
+}
+.comment-body .reply a{
+padding-left: 20px;
+font-size:14px;
+}
+.reply a:hover{
+text-decoration: underline;
+}
+#comment-author-info input{
+margin:2px 5px 5px 0;
+width:280px;
+height: 32px;
+}
+#commentform textarea{
+width:660px;
+height:130px;
+}
+#commentform p{
+margin-bottom: 5px;
+}
+.cancel-comment-reply{
+line-height: 38px;
+margin-top: 5px;
+}
+a#cancel-comment-reply-link{
+padding: 5px;
+border:1px solid #0196E3;
+font-size: 14px;
+color:#0196E3;
+}
+.comment_mail_notify {
+border: 1px solid #ccc;
+margin: 5px 0 5px 0 !important;
+padding: 0 5px 0 5px;
+}
+#comments{
+font-weight:400;
+overflow: visible;
+text-align:left;
+background: none;
+}
+/*评论分页*/
+.paginate_comments{
+background: #eef4ff;
+padding:0px 15px;
+margin-bottom:5px;
+border-bottom: 1px solid #D7D7D7;
+border-left: 1px solid #D7D7D7;
+text-align:center;
+}
+.paginate_comments .current,.paginate_comments a{
+display: inline-block;
+padding: 3px 8px;
+background: #fff;
+height:18px;
+line-height: 18px;
+}
+.paginate_comments .current{
+border: 1px solid #D7D7D7;
+border-top: none;
+border-bottom: 1px solid red;
+}
+a.page-numbers:hover{
+border: 1px solid #D7D7D7;
+border-top: none;
+border-bottom: 1px solid red;
+}
+/**返回顶部**/
+#gotopbtn{
+width:30px;height:30px;
+line-height:999px;
+overflow:hidden;
+background:url(../images/scrolltotop.png) no-repeat 0 0;
+position:fixed;_position:absolute;
+bottom:55px; left:50%;
+margin-left:540px;
+display:none;
+cursor:pointer;
+}
+/** 全本小说**/
+.MessageDiv{
+background: #FFF9D9;
+border: 1px solid #FFCC33;
+line-height: 150%;
+margin: 20px auto auto;
+padding: 6px 10px;
+text-align: center;
+}
+
+
+.pages {
+	clear: both;
+	padding: 10px 0;
+	color: #888;
+	text-align: center
+}
+
+.pages li,.pages strong,.pages span {
+	display: inline-block;
+	margin: 0 3px;
+	vertical-align: middle;
+}
+
+.pages a,.pages strong,.pages span {
+	display: inline-block;
+	padding: 0 8px;
+	border: 1px solid #ccc;
+	background: #fff;
+	color: #666;
+	line-height: 20px
+}
+
+.pages a:hover,.pages .current a {
+	border: 1px solid #007ecc;
+	background: #3b94dd;
+	color: #fff;
+	text-decoration: none
+}
+
+.pages span {
+	border: 1px solid #fff;
+	cursor: pointer
+}
+/*bookcase*/
+.novelslist2 ul{ padding:10px;}
+.novelslist2 li{ padding:5px 0px 0px 0px; border-bottom:solid 1px #DDDDDD; height:25px; line-height:25px; overflow:hidden;}
+.novelslist2 li span{ float:left; display:inline-block;}
+.novelslist2 li .s1{ width:12%;overflow:hidden;text-align:center;}
+.novelslist2 li .s2{ width:20%;overflow:hidden;}
+.novelslist2 li .s3{ width:33%;overflow:hidden;}
+.novelslist2 li .s4{ width:15%;overflow:hidden;}
+.novelslist2 li .s5{ color:red; width:10%;overflow:hidden;}
+.novelslist2 li .s6{ width:10%; overflow:hidden;}
+.novelslist2 li a{ color:#6F78A7;}
+
+/*author*/
+.authorinfo{overflow:hidden;}
+.authorinfo p{padding: 15px;line-height: 180%;}
+.tags li{display: inline-block; margin-right: 6px;line-height: 24px; padding: 0;border:none;}
+.tags li a{display: block;color: #333;padding: 0 6px;display: inline-block;font-size: 14px;text-decoration: underline;}
+
+/*search*/
+.searchbox{
+	width: 500px;
+	margin: 50px auto;
+}
+.searchbox .searchinput {
+	width: 400px;
+	line-height: 40px;
+	border: 3px solid #14b394;
+	float: left;
+	border-radius: 4px 0 0 4px;
+	padding: 0 5px 0 9px;
+	font-size: 14px;
+}
+.searchbox .searchbtn {
+	width: 80px;
+	border: none;
+	background: #14b394;
+	color: #fff;
+	line-height: 46px;
+	height: 46px;
+	padding: 0;
+	font-size: 16px;
+	float: left;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+}
+.searchbox .searchbtn:hover{
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+.topsearch{
+	float: right;
+	margin-top: 22px;
+}
+#headbtn{
+	display: none;
+}
+h1 span{
+	margin-right: 10px;
+}

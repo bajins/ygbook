@@ -1,0 +1,34 @@
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">搜素记录</strong></div>
+</div>
+<hr>
+
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<table class="am-table am-table-striped am-table-hover table-main">
+			<thead>
+			 <tr>
+					<th class="table-id am-hide-sm-only am-hide-sm-only">ID</th>
+					<th class="table-title">书名</th>
+					<th class="table-content">URL</th>
+					<th class="table-author">节点</th>
+					<th class="table-date am-hide-sm-only">入库时间</th>
+				</tr>
+			</thead>
+			<foreach name="pickerlist" item="vo">
+			<tr>
+				<td class="am-hide-sm-only">{$vo.id}</td>
+				<td>{$vo.title}</td>
+				<td>{$vo.url}</td>
+				<td>{$vo.pid}</td>
+				<td class="am-hide-sm-only">{$vo.updatetime|date='Y-m-d H:i',###}</td>
+			</tr>
+			</foreach>
+		</table>
+		<div class="am-cf">
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<meta property="og:type" content="novel"/>
+	<meta property="og:title" content="{$articledb.title}"/>
+	<meta property="og:description" content="{$articledb.description}"/>
+	<meta property="og:image" content="{$articledb.thumb}"/>
+	<meta property="og:novel:category" content="{$articledb.catename}"/>
+	<meta property="og:novel:author" content="{$articledb.author}"/>
+	<meta property="og:novel:book_name" content="{$articledb.title}"/>
+	<meta property="og:novel:read_url" content="{$TDK.canonicalurl}"/>
+	<meta property="og:url" content="{:C('PCHOST')}{$articledb.firstchapterurl}"/>
+	<meta property="og:novel:status" content="<if condition="$articledb['full'] eq 0">连载中<else />已完成</if>"/>
+	<meta property="og:novel:update_time" content="{$articledb.time}"/>
+	<meta property="og:novel:latest_chapter_name" content="{$articledb.lastchapter}"/>
+	<meta property="og:novel:latest_chapter_url" content="{:C('PCHOST')}{$articledb.lastchapterurl}"/>	
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" media="screen and (max-width:600px)" href="__PUBLIC__/{$theme}/css/mobile.css" type="text/css" />
+	<script src="__PUBLIC__/{$theme}/js/jquery2.1.4.min.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/user.js"></script>
+	<script src="__PUBLIC__/layer/layer.js"></script>
+	<script>var bookid = '{$TDK.oid}', hash = '{$TDK.hash}', index_rule = '{:C('ID_RULE')}', cindex_rule = '{:C('CID_RULE')}', znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="crumbs">
+	<div class="fl"><span>当前位置：</span><a href="{$TDK.weburl}" title="{$TDK.webname}">{$TDK.webname}</a> &gt; <a href="{$TDK.cateurl}" title="{$TDK.webname}{$articledb.catename}">{$articledb.catename}</a> &gt; <a href="{$TDK.canonicalurl}" title="{$articledb.title}">{$articledb.title}最新章节</a></div>
+</div>
+<div class="container ads">
+	<div class="inner">
+		{$advcode.view_1.code}
+	</div>
+</div>
+<div class="container">
+	<div class="bookinfo">
+		<div class="bimg"><a href="{$TDK.canonicalurl}" title="{$TDK.webname} {$articledb.title}"><img src="{$articledb.thumb}" alt="{$TDK.webname} {$articledb.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a></div>
+		<div class="bextra">
+			<div class="btitle">
+				<h1>{$articledb.title}</h1>
+				<em>作者：<a href="{:reurl('author', $articledb)}" target="_blank" title="{$articledb.author}作品集">{$articledb.author}</a></em>
+			</div>
+			<div class="infobar">
+				<p class="stats fl">
+					<b>最新章节：</b><a href="{$articledb.lastchapterurl}" target="_blank" title="{$articledb.title}最新章节">{$articledb.lastchapter}</a>
+				</p>
+				<div class="status fr">
+					<em>状态：</em><if condition="$articledb['full'] eq 0">连载中<else />已完结</if>&nbsp;&nbsp;&nbsp;
+					<em>更新时间：</em>{$articledb.time}
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="intro">
+				<b>内容简介：</b>{$articledb.description}
+			</div>
+			<div class="tuijian">
+				推荐阅读：<foreach name="dataarea_list.pc_view_text" item="v"><a href="{$v.rewriteurl}" title="{$v.title}最新章节">{$v.title}</a>、</foreach><a href="{$TDK.canonicalurl}" title="{$articledb.title}最新章节">{$articledb.title}</a>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="ads">
+		{$advcode.view_2.code}
+	</div>
+	<div class="inner">
+		<dl class="chapterlist cate">
+			<dt class="title">《{$articledb.title}》最新章节<span id="loadingtip">（<img src="__PUBLIC__/{$theme}/images/loading.gif" />自动更新中）</span></dt>
+			<div id="newchapter"><foreach name="newchaperlist" item="v2">
+			<dd><a href="{:reurl('chapter', $v2, $maindomain)}" target="_blank" title="{$articledb.title} {$v2.title}">{$v2.title}</a></dd>
+			</foreach></div>
+		</dl>
+	</div>
+	<div class="inner">
+		<dl class="chapterlist cate">
+			<dt class="title">《{$articledb.title}》章节列表</dt>
+			<foreach name="chapterdb" item="v3">
+			<dd><a href="{:reurl('chapter', $v3, $maindomain)}" target="_blank" title="{$articledb.title} {$v3.title}">{$v3.title}</a></dd>
+			</foreach>
+		</dl>
+	</div>
+	<div class="ads">
+		{$advcode.view_3.code}
+	</div>
+</div>
+<script id="chapterhtml" type="text/html">
+	<dd><a href="{:C('HOME_URL')}{:C('CHAPTER_RULE')}" target="_blank">{title}</a></dd>
+</script>
+<script src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+<include file="Public/footer" />
+</body>
+</html>

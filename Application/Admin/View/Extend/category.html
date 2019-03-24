@@ -1,0 +1,218 @@
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">栏目设置</strong> / <small>{$category.$dir.name}</small></div>
+</div>
+<hr>
+<div class="am-tabs am-margin">
+	<if condition="$action eq 'edit'">
+	<div class="am-alert am-alert-warning" data-am-alert>
+		<button type="button" class="am-close">&times;</button>
+		<p>留空则使用基本设置中的列表/文章页标题、关键词、描述等。</p>
+	</div>
+	<div class="am-tab-panel am-fade am-in am-active">
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="{$action}"/>
+		<input type="hidden" name="dir" value="{$dir}"/>
+		<input type="hidden" name="do" value="save"/>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				是否启用
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<select name="open">
+					<option value="yes"<if condition="$category[$dir]['open'] eq 'yes'"> selected</if>>启用</option>
+					<option value="no"<if condition="$category[$dir]['open'] eq 'no'"> selected</if>>停用</option>
+				</select>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">是否启用</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目DIR
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="newdir" value="{$category.$dir.dir}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4"></div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目列表页标题
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="listtitle" value="{$category.$dir.listtitle}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目列表页关键词
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="listkw" value="{$category.$dir.listkw}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目列表页描述
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<textarea name="listdes" class="am-input-sm" cols="30" rows="10">{$category.$dir.listdes}</textarea>
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目文章页标题
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="viewtitle" value="{$category.$dir.viewtitle}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}、{title}、{keyword}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目文章页关键词
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="viewkw" value="{$category.$dir.viewkw}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}、{title}、{keyword}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目文章页描述
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="viewdes" value="{$category.$dir.viewdes}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}、{title}、{keyword}、{intro}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目章节页标题
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="chaptertitle" value="{$category.$dir.chaptertitle}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{cate}、{webname}、{title}、{ctitle}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目章节页关键词
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="chapterkw" placeholder="{title},{author},{ctitle},{webname}" value="{$category.$dir.chapterkw}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{ctitle}、{title}、{author}、{cate}、{webname}</div>
+		</div>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-4 am-u-md-2 am-text-right">
+				栏目章节页描述
+			</div>
+			<div class="am-u-sm-8 am-u-md-6">
+				<input type="text" class="am-input-sm" name="chapterdes" placeholder="" value="{$category.$dir.chapterdes}">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">可用{ctitle}、{title}、{author}、{cate}、{webname}</div>
+		</div>
+		<div class="am-margin">
+			<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+		</div>
+		</form>
+	</div>
+	<else />
+	<div class="am-tab-panel am-fade am-in am-active">
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-3 am-u-md-1 am-text-right">
+				是否启用
+			</div>
+			<div class="am-u-sm-3 am-u-md-2 am-text-right">
+				排序（大到小）
+			</div>
+			<div class="am-u-sm-3 am-u-md-2 am-text-right">
+				栏目DIR（用于路径伪静态）
+			</div>
+			<div class="am-u-sm-3 am-u-md-3">
+				栏目名称
+			</div>
+			<div class="am-hide-sm-only am-u-md-4">
+				<a class="am-btn am-btn-secondary am-btn-sm" onclick="addline('addarea','codearea')"><span class="am-icon-plus"></span> 新增一行</a>
+			</div>
+		</div>
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="save"/>
+		<div class="am-g am-margin-top">
+			<div class="am-u-sm-3 am-u-md-1 am-text-right">
+				<select disabled="true">
+					<option>默认栏目</option>
+				</select>
+			</div>
+			<div class="am-u-sm-3 am-u-md-2 am-text-right">
+				<input type="text" class="am-input-sm" name="dorder" placeholder="0" value="{$category.default.order}" required="true">
+			</div>
+			<div class="am-u-sm-3 am-u-md-2 am-text-right">
+				<input type="text" class="am-input-sm" name="ddir" placeholder="news" value="{$category.default.dir}" required="true">
+			</div>
+			<div class="am-u-sm-3 am-u-md-3">
+				<input type="text" class="am-input-sm" name="dname" placeholder="资讯" value="{$category.default.name}" required="true">
+			</div>
+			<div class="am-hide-sm-only am-u-md-4"><a class="am-btn am-btn-success am-btn-xs" onclick="editcategory('default')"><span class="am-icon-pencil-square-o"></span> 编辑</a></div>
+		</div>
+		{~$i=0;}
+		<foreach name="category" key="key" item="vo">
+			<if condition="$key neq 'default'">
+			<div id="area_{$i}">
+				<div class="am-g am-margin-top">
+					<div class="am-u-sm-3 am-u-md-1 am-text-right">
+						<select name="copen[]" id="popen_{$i}">
+							<option value="yes"<if condition="$vo['open'] eq 'yes'"> selected</if>>启用</option>
+							<option value="no"<if condition="$vo['open'] eq 'no'"> selected</if>>停用</option>
+							<option value="deleted" style="display:none">删除</option>
+						</select>
+					</div>
+					<div class="am-u-sm-3 am-u-md-2 am-text-right">
+						<input type="text" class="am-input-sm" name="corder[]" placeholder="0" value="{$vo.order}" required="true">
+					</div>
+					<div class="am-u-sm-3 am-u-md-2 am-text-right">
+						<input type="text" class="am-input-sm" name="cdir[]" value="{$vo.dir}">
+					</div>
+					<div class="am-u-sm-3 am-u-md-3">
+						<input type="text" class="am-input-sm" name="cname[]" value="{$vo.name}">
+					</div>
+					<div class="am-hide-sm-only am-u-md-4">
+						<a class="am-btn am-btn-success am-btn-xs" onclick="editcategory('{$key}')"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+						<a class="am-btn am-btn-warning am-btn-xs" onclick="delline('{$i}')"><span class="am-icon-trash-o"></span> 删除</a>
+					</div>
+				</div>
+			</div>
+			</if>
+			{~$i++;}
+		</foreach>
+		<div id="codearea">
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-3 am-u-md-1 am-text-right">
+					<select name="nopen[]">
+						<option value="yes">启用</option>
+						<option value="no">停用</option>
+					</select>
+				</div>
+				<div class="am-u-sm-3 am-u-md-2 am-text-right">
+					<input type="text" class="am-input-sm" name="norder[]" placeholder="0" value="">
+				</div>
+				<div class="am-u-sm-3 am-u-md-2 am-text-right">
+					<input type="text" class="am-input-sm" name="ndir[]" placeholder="栏目DIR" value="">
+				</div>
+				<div class="am-u-sm-3 am-u-md-3">
+					<input type="text" class="am-input-sm" name="nname[]" placeholder="栏目名称" value="">
+				</div>
+				<div class="am-hide-sm-only am-u-md-4">dir用于url路径，限字母、数字</div>
+			</div>
+		</div>
+		<div id="addarea"></div>
+		<div class="am-margin">
+			<button type="submit" class="am-btn am-btn-primary am-btn-sm">提交保存</button>
+		</div>
+		</form>
+	</div>
+	</if>
+</div>

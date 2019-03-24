@@ -1,0 +1,38 @@
+<div class="header">
+	<if condition="ACTION_NAME neq 'index'"><div class="back"><a href="javascript:history.go(-1);">返回</a></div></if>
+	<div class="logo"><a href="{$TDK.weburl}">{$TDK.webname}</a></div>
+	<div class="back_r"><a id="translatelink" style="color:red;" href="javascript:translatePage();" title="点击[繁/简]切换">繁体版</a></div>
+</div>
+<div class="nav">
+	<ul>
+		<li><a href="{$TDK.weburl}">首页</a></li>
+		<li><a href="{$catelist.top}">排行</a></li>
+		<li><a href="{$catelist.all}">分类</a></li>
+		<li><a href="{:U('/home/index/bookcase')}">书架</a></li>
+		<li><a href="{:U('/home/search')}">搜索</a></li>
+		<div class="cc"></div>
+	</ul>
+</div>
+<div class="search">
+<if condition="$comset.znsid neq ''">
+	<form name="articlesearch" action="http://zhannei.baidu.com/cse/search" method="get">
+	<input type="hidden" name="s" value="{$comset.znsid}">
+	<table cellpadding="0" cellspacing="0" style="width:100%;">
+		<tr>
+		<td style="background-color:#fff; border:1px solid #CCC;"><input style="height:26px;line-height:26px;" name="q" type="text" class="key" placeholder="输入书名/作者，宁可少字不要错字" value="" required /></td>
+		<td style="width:35px; background-color:#0080C0; background-image:url('__PUBLIC__/{$theme}/images/search.png'); background-repeat:no-repeat; background-position:center"><input name="submit" type="submit" value="" class="go"></td>
+		</tr>
+	</table>
+	</form>
+<else />
+	<form name="articlesearch" action="{:U('/home/search')}" method="post">
+	<input type="hidden" name="action" value="search">
+	<table cellpadding="0" cellspacing="0" style="width:100%;">
+		<tr>
+		<td style="background-color:#fff; border:1px solid #CCC;"><input style="height:26px;line-height:26px;" name="q" type="text" class="key" placeholder="输入书名/作者，宁可少字不要错字" value="" required /></td>
+		<td style="width:35px; background-color:#0080C0; background-image:url('__PUBLIC__/{$theme}/images/search.png'); background-repeat:no-repeat; background-position:center"><input name="submit" type="submit" value="" class="go"></td>
+		</tr>
+	</table>
+	</form>
+</if>
+</div>

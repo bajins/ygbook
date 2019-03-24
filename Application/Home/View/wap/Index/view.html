@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}">
+	<meta name="description" content="{$TDK.description}">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/ptm.min.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/skin.min.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/font-awesome.min.css" />
+	<script src="__PUBLIC__/{$theme}/js/static.js?v{$version}"></script>
+	<script src="__PUBLIC__/layer/mobile/layer.js"></script>
+	<script>
+		var bookid = '{$TDK.oid}', hash = '{$TDK.hash}', index_rule = '{:C('ID_RULE')}', cindex_rule = '{:C('CID_RULE')}';
+	</script>
+</head>
+<body class="pt-dir-page">
+<include file="Public/header" />
+<section class="ptm-content ptm-card pt-infopage">
+	<div class="baseinfo">
+		<img src="{$articledb.thumb}" alt="{$articledb.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'">
+		<div class="pt-novel">
+			<h1 class="pt-name"><a href="{$TDK.canonicalurl_m}">{$articledb.title}</a></h1>
+			<div class="pt-info">作者：<a href="{:reurl('author', $articledb)}">{$articledb.author}</a></div>
+			<div class="pt-info">分类：<a href="{$TDK.cateurl}">{$articledb.catename}</a></div>
+			<div class="pt-info">更新：{$articledb.time}</div>
+			<div class="pt-info">人气：{$articledb.views}</div>
+		</div>
+	</div>
+	<div class="twobutton ptm-clearfix">
+		<div class="ptm-col-xs-6">
+			<a class="ptm-btn ptm-btn-primary ptm-btn-block" href="{$articledb.firstchapterurl}">开始阅读</a>
+		</div>
+		<div class="ptm-col-xs-6">
+			<a class="ptm-btn ptm-btn-warning ptm-btn-block" href="{:U('/home/index/bookcase')}" rel="nofollow">查看书架</a>
+		</div>
+	</div>
+	<div class="ptm-line-x"></div>
+	<div class="intro" >{$articledb.description}</div>
+</section>
+{$advcode.view_1.code_wap}
+<section class="pt-infopage-more">
+	<div class="ptm-card">
+		<div class="ptm-card-header">
+			<div class="ptm-pull-left">
+				《{$articledb.title}》最新12章
+			</div>
+			<div class="ptm-pull-right">
+				<span id="loading-tip1"><i class="ptm-iconfont fa fa-spinner fa-spin"></i> 更新中</span>
+			</div>
+		</div>
+		<div class="ptm-card-content pt-dir">
+			<ul class="ptm-list-view" id="newchaperlist">
+				<foreach name="newchaperlist" item="v2">
+					<li>
+						<a href="{:reurl('chapter', $v2, $maindomain)}" title="{$articledb.title} {$v2.title}">{$v2.title}</a>
+					</li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="ptm-card-footer" id="loading-tip">
+			<i class="ptm-iconfont fa fa-spinner fa-spin"></i> 机器人正在抓取最新章节...
+		</div>
+	</div>
+	<a id="i2"></a>
+	{$advcode.view_2.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header">
+			<div class="ptm-pull-left">
+				《{$articledb.title}》章节列表
+			</div>
+			<div class="ptm-pull-right">
+				50章/页
+			</div>
+		</div>
+		<div class="ptm-card-content pt-dir">
+			<ul class="ptm-list-view" id="chapterlist">
+				<foreach name="chapterdb" item="v3">
+					<li>
+						<a href="{:reurl('chapter', $v3, $maindomain)}" title="{$articledb.title} {$v3.title}">{$v3.title}</a>
+					</li>
+				</foreach>
+			</ul>
+			<div class="ptm-card-footer ptm-clearfix">
+				<div class="ptm-col-xs-3">
+					<a class="ptm-btn ptm-btn-primary ptm-btn-block ptm-btn-outlined" rel="prevpage">上一页</a>
+				</div>
+				<div class="ptm-col-xs-6" style="padding:0 10px;">
+					<button class="ptm-btn ptm-btn-primary ptm-btn-block ptm-btn-outlined showdir" rel="chapterstat"><span>1/1页</span><i class="fa fa-angle-down pt-dir-icon"></i></button>
+				</div>
+				<div class="ptm-col-xs-3">
+					<a class="ptm-btn ptm-btn-primary ptm-btn-block ptm-btn-outlined" rel="nextpage">下一页</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{$advcode.view_3.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			<div class="ptm-pull-left">
+				热门推荐
+			</div>
+		</div>
+		<div class="ptm-card-content" style="padding:0">
+			<ul class="ptm-list-view ptm-grid-view pt-card-1">
+				<foreach name="dataarea_list.pcwap_week_6" item="v">
+				<li class="ptm-list-view-cell ptm-img ptm-col-xs-4">
+					<div class="imgarea">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img class="ptm-img-object" {$comset.src}="{$v.thumb}" alt="{$title}"></a>
+					</div>
+					<div class="ptm-img-body">
+						<span class="ptm-block pt-name ptm-text-cut ptm-text-left"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></span>
+						<span class="ptm-block pt-author ptm-text-cut ptm-text-left"><a href="{:reurl('author', $v)}">{$v.author}</a></span>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+</section>
+<div class="sel ptm-hide">
+	<div class="ptm-alert-shade"></div>
+	<div class="pt-dir-sel">
+		<p class="title">请选择章节</p>
+		<ul></ul>
+	</div>
+</div>
+<div class="ptm-line-x"></div>
+<script id="chapterhtml" type="text/html">
+	<li>
+		<a href="{:C('HOME_URL')}{:C('CHAPTER_RULE')}">{title}</a>
+	</li>
+</script>
+<include file="Public/footer" />
+</body>
+</html>

@@ -1,0 +1,128 @@
+<?php
+if($action == 'add'){
+	$seodb = array(
+		'title' => '{name}_{name}小说阅读网_新{name}',
+		'keywords' => '{name},{name}小说阅读网,新{name}',
+		'description' => '{name}是广大书迷必备的{name}小说阅读网。新{name}本着免费、无弹窗、全文字、更新快的宗旨,为大家提供各类型的免费小说。看小说就到{name}！',
+	);
+}
+?>
+<div class="am-cf am-padding am-padding-bottom-0">
+	<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">关键词列表/管理</strong></div>
+</div>
+<hr>
+<if condition="$action eq null">
+<div class="am-g">
+	<div class="am-u-sm-12 am-fr">
+		<a class="am-btn am-btn-success am-btn-sm" href="{:U('seowords', array('action' => 'add'))}">
+			<i class="am-icon-plus"></i> 添加关键词
+		</a>
+	</div>
+</div>
+</if>
+<div class="am-g">
+	<div class="am-u-sm-12">
+	<if condition = "$action eq 'add' or $action eq 'edit'">
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action" value="{$action}"/>
+		<input type="hidden" name="id" value="{$seodb.id}">
+		<input type="hidden" name="do" value="save">
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					站名
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<if condition="$action eq 'add'">
+					<textarea name="sitename" cols="30" rows="10" placeholder="每行一个站名，可批量添加，也可只添加单个"></textarea>
+					<else />
+					<input type="text" class="am-input-sm" name="sitename" value="{$seodb.sitename}">
+					</if>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">必填（如爱去小说网），即{name}</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					URL关键词/ename
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<if condition="$action eq 'add'">
+					<textarea name="ename" cols="30" rows="10" placeholder="每行一个ename，需要与站名一一对应"></textarea>
+					<else />
+					<input type="text" class="am-input-sm" name="ename" value="{$seodb.ename}">
+					</if>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">*必填（如aiquxs）</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					网页标题
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<input type="text" class="am-input-sm" name="title" value="{$seodb.title}">
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">*必填</div>
+			</div>
+			<div class="am-g am-margin-top">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					网页关键词
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<input type="text" class="am-input-sm" name="keywords" value="{$seodb.keywords}">
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">*必填</div>
+			</div>
+			<div class="am-g am-margin-top-sm">
+				<div class="am-u-sm-4 am-u-md-2 am-text-right">
+					网页描述
+				</div>
+				<div class="am-u-sm-8 am-u-md-4">
+					<textarea name="description" cols="30" rows="10">{$seodb.description}</textarea>
+				</div>
+				<div class="am-hide-sm-only am-u-md-6">*必填，{name}会被替换为上面的站名</div>
+			</div>
+			<div class="am-margin">
+				<button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+			</div>
+		</form>
+	<else />
+		<form class="am-form" action="__ACTION__" method="post" target="_self">
+		<input type="hidden" name="action">
+		<input type="hidden" name="newfid">
+			<table class="am-table am-table-striped am-table-hover table-main">
+				<thead>
+					<tr>
+						<th class="table-id am-hide-sm-only">ID</th>
+						<th class="table-title">站名</th>
+						<th class="table-type am-hide-sm-only">ename</th>
+						<th class="table-author am-hide-sm-only">人气</th>
+						<th class="table-set">操作</th>
+					</tr>
+				</thead>
+				<foreach name="seowordlist" item="vo">
+					<tr>
+						<td class="am-hide-sm-only">{$vo.id}</td>
+						<td><a href="{:U('seowords',array('action'=>'edit','id'=>$vo['id']))}" target="_blank">{$vo.sitename}</a></td>
+						<td class="am-hide-sm-only">{$vo.ename}</td>
+						<td class="am-hide-sm-only">{$vo.views}</td>
+						<td>
+							<div class="am-dropdown" data-am-dropdown>
+								<button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+								<ul class="am-dropdown-content">
+									<li><a href="{:reurl('seoword', $vo)}" target="_blank">查看</a></li>
+									<li><a href="{:U('seowords',array('action'=>'edit','id'=>$vo['id']))}" target="_blank">编辑</a></li>
+									<li><a href="{:U('seowords',array('action'=>'del','id'=>$vo['id']))}">删除</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</foreach>
+			</table>
+		</form>
+		<div class="am-cf">
+			<div class="am-fr">
+				<ul class="am-pagination">{$pagehtml}</ul>
+			</div>
+		</div>
+	</if>
+	</div>
+</div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.canonicalurl}"/>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" media="screen and (max-width:600px)" href="__PUBLIC__/{$theme}/css/mobile.css" type="text/css" />
+	<script src="__PUBLIC__/{$theme}/js/jquery2.1.4.min.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/user.js"></script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="container">
+	<div class="inner">
+		<div class="title">{$TDK.catename}本周热门</div>
+		<foreach name="hotlist" item="v">
+		<div class="details">
+			<div class="item-img">
+				<a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$TDK.webname} {$v.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+				<h2><a href="{$v.rewriteurl}">{$v.title}</a></h2>
+				作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a>
+				<p>{$v.description}...</p>
+			</div>
+		</div>
+		</foreach>
+	</div>
+</div>
+<div class="container ads">
+	<div class="inner">
+		{$advcode.list_1.code}
+	</div>
+</div>
+<div class="container">
+	<div id="content">
+		<div class="inner">
+			<div class="title"><h3>{$TDK.catename}最近更新</h3></div>
+			<div class="details">
+				<ul class="gengxin">
+					<foreach name="articlelist" item="v">
+					<li>
+						<span class="col1"><a href="{$v['rewriteurl']}" title="{$TDK.webname} {$v['title']}">{$v['title']}</a></span>
+						<span class="col2"><a href="{$v['lastchapterurl']}" title="{$v['title']}最新章节" target="_blank">{$v['lastchapter']}</a></span>
+						<span class="col3"><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+						<span class="col4">{$v['updatetime']}</span>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="pages">
+				{$pagehtml}
+			</div>
+		</div>
+	</div>
+	<div id="sidebar">
+		<div class="inner">
+			<div class="title"><h3>{$TDK.catename}最新入库</h3></div>
+			<div class="details">
+				<ul class="item-list">
+				<foreach name="newestlist" item="v">
+					<li><a href="{$v['rewriteurl']}" title="{$TDK.webname} {$v['title']}">{$v['title']}</a>/<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

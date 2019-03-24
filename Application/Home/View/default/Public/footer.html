@@ -1,0 +1,21 @@
+<div id="footer">
+    <p>
+        <a href="{$TDK.weburl}" rel="index">{$TDK.webname}</a>所有内容使用搜索引擎转码技术抓取自网络，如有侵犯版权，请来信告知，本站立即处理。
+        <br /> Powered by YGBOOK v{$version}. Copyright &copy;
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
+        <a href="{$TDK.weburl}" rel="index">{$TDK.webname}</a> All rights reserved. Processed in {$TDK.runtime}s {$statcode}
+    </p>
+</div>
+<if condition="$comset.src neq 'src'">
+    <script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+    <script>
+        $(function() {
+            $('[rel-class=lazyload]').lazyload({
+                effect: "fadeIn"
+            });
+        });
+    </script>
+</if>
+{$advcode.global_footer.code}

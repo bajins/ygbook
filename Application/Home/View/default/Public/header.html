@@ -1,0 +1,46 @@
+<div id="header">
+	<div id="topbar">
+		<div class="hd">
+			<div class="share"><a href="javascript:;" onclick="fav();">设为首页 | 收藏本站</a></div>
+			<div class="usercss"><a href="{$catelist.all}">小说书库</a> | <a href="{$catelist.full}">全本小说</a> | <a href="{:C('WAPHOST')}">手机版</a> | <a id="translatelink" style="color:red;" href="javascript:translatePage();" title="点击[繁/简]切换">繁体版</a></div>
+		</div>
+	</div>
+	<div id="headbar">
+		<div class="hd cf">
+		  	<div class="logo"><a href="{$TDK.weburl}">{$TDK.webname}</a></div>
+		  	<div class="searchwrap">
+<if condition="$comset.znsid neq ''">
+				<form action="http://zhannei.baidu.com/cse/search" method="get" target="_blank">
+					<input type="hidden" name="s" value="{$comset.znsid}">
+					<input type="text" name="q" id="searchkey" baidusug="2" placeholder="请您少字也别错字..." class="search-text" />
+					<input class="search-submit" type="submit" value="搜索" />
+				</form>
+<else />
+				<form action="{:U('/home/search')}" method="post" target="_blank">
+					<input type="hidden" name="action" value="search">
+					<input type="text" name="q" id="searchkey" baidusug="2" placeholder="请您少字也别错字..." class="search-text" />
+					<input class="search-submit" type="submit" value="搜索" />
+				</form>
+</if>
+				<div class="hotword">
+					热搜：<foreach name="dataarea_list.81zw_search_words" item="v"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></foreach>
+				</div>
+		  	</div>
+			<div id="head-plus">
+				<script>share();</script>
+			</div>
+		</div>
+	</div>
+	<div id="subnav">
+		<div class="hd">
+			<ul>
+				<li><a href="{$TDK.weburl}" <if condition="$cate eq ''">class="current"</if>>网站首页</a></li>
+				<foreach name="category" key="key" item="vo">
+				<li><a href="{$vo['url']}" <if condition="$category[$key]['dir'] eq $cate">class="current"</if>>{$vo['name']}</a></li>
+				</foreach>
+				<li><a href="/home/index/bookcase">临时书架</a></li>
+				<li><a href="{$catelist.top}" <if condition="'top' eq $cate">class="current"</if>>排行榜</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

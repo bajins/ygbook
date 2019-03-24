@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$TDK.title}</title>
+<meta name="keywords" content="{$TDK.keyword}" />
+<meta name="description" content="{$TDK.description}" />
+<link rel="canonical" href="{$TDK.weburl}"/>
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+<link href="__PUBLIC__/{$theme}/css/base.css?v{$version}" rel="stylesheet">
+<script src="__PUBLIC__/{$theme}/js/base.js?v{$version}" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="container">
+		<div class="inner">
+			<div class="details">
+				<p class="not" style="color:green">
+				1、<font color=red>{$TDK.webname}全新改版，请记住本站唯一域名：{$TDK.weburl}，其他均为假冒！！！</font><br />
+	2、如果您想推荐优秀的网络小说，或者对{$TDK.webname}有任何建议的话，请给我们留言。我们承诺永无弹窗广告！<br />
+	3、手机访问：<a href="{$TDK.canonicalurl_m}"><font color=red>{$TDK.canonicalurl_m}</font></a>，您也可以百度搜索“<font color=red>{$TDK.webname}</font>”，如果您觉得本站不错，还请向QQ、微信里的朋友分享下，谢谢！
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="inner">
+			<div class="title"><span class="label"></span><em>重磅小说推荐</em></div>
+			<div class="details cf">
+				<foreach name="dataarea_list.81zw_fengtui" item="v">
+				<div class="item-img">
+				<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+				<h5><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></h5>
+				作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a>
+				<p>{$v.description}......</p>
+				</div>
+				</foreach>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.index_1.code}</div>
+	<div class="container cf">
+		<div class="coverecom w_440 left mbottom">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('xuanhuan')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_xuanhuan" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_xuanhuan2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="coverecom w_440 right mbottom">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('xiuzhen')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_xiuzhen" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_xiuzhen2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="coverecom w_440 left mbottom">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('dushi')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_dushi" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_dushi2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="coverecom w_440 right mbottom">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('lishi')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_lishi" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_lishi2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="coverecom w_440 left">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('wangyou')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_wangyou" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_wangyou2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="coverecom w_440 right">
+			<div class="title">
+				<span class="label"></span><em>{:getcate('kehuan')}</em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_kehuan" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_kehuan2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.index_2.code}</div>
+	<div class="container mtop">
+		<div class="coverecom">
+			<div class="title">
+				<span class="label"></span><em><a href="/quanben">全本人气榜</a></em>
+			</div>
+			<div class="recomclass cf">
+				<foreach name="dataarea_list.81zw_quanben" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="123" width="95" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd class="name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></dd>
+					<dd class="tit">作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></dd>
+					<dd>{$v.description}...</dd>
+				</dl>
+				</foreach>
+				<ul>
+				<foreach name="dataarea_list.81zw_quanben2" item="v">
+					<li><em><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></em><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></li>
+				</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="content">
+			<div class="inner">
+				<div class="title"><span class="label"></span><a href="/shuku"><em>最近更新小说</em></a></div>
+				<div class="details">
+					<ul class="item-index cf">
+						<foreach name="updatelist" item="v">
+						<li>
+							<span class="s1">[<a href="{$v['cateurl']}">{$v['catename']}</a>]</span>
+							<span class="s2"><a href="{$v['rewriteurl']}" title="{$v['title']}">{$v['title']}</a></span>
+							<span class="s3"><a href="{$v['lastchapterurl']}" target="_blank">{$v['lastchapter']}</a></span>
+							<span class="s4"><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+							<span class="s5">{$v['updatetime']}</span>
+						</li>
+						</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="sidebar">
+			<div class="inner">
+				<div class="title"><span class="label"></span><em>最新收录小说</em></div>
+				<div class="details">
+					<ul class="item-list">
+					<assign name="i" value="0" />
+					<foreach name="newestlist" item="v">
+					<assign name="i" value="$i+1" />
+					<li><i>{$i}.</i><a href="{$v['rewriteurl']}" title="{$v['title']}">{$v['title']}</a> / {$v['posttime']}</li>
+					</foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.index_3.code}</div>
+	<div class="container">
+		<div class="inner">
+			<div class="title"><span class="label"></span><em>友情链接</em></div>
+			<div class="details">
+				<ul class="item-link cf">
+					<foreach name="TDK.flink" item="v3">
+						<li><a href="{$v3['url']}" target="_blank">{$v3['name']}</a></li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<include file="Public/footer" />
+</div>
+<script src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+</body>
+</html>

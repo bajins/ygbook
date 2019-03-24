@@ -1,0 +1,43 @@
+<if condition="$index gt 0">
+<?xml version="1.0" encoding="utf-8"?>
+	<urlset>
+		<foreach name="sitemapdata['novellist']" key="key" item="vo"><url>
+			<loc><![CDATA[{:C('NOWHOST')}{$vo.rewriteurl}]]></loc>
+			<lastmod>{$vo.updatetime}</lastmod>
+			<data>
+				<name>{$vo.title}</name>
+				<author>
+					<name>{$vo.author}</name>
+					<url><![CDATA[http://zhannei.baidu.com/cse/search?q={$vo.author_encode}&s={$sitemapdata.znsid}&entry=1]]></url>
+				</author>
+				<image><![CDATA[{$vo.thumb}]]></image>
+				<description><![CDATA[{$vo.description}]]></description>
+				<genre>{$vo.catename}</genre>
+				<wordCount>0</wordCount>
+				<url><![CDATA[{:C('NOWHOST')}{$vo.rewriteurl}]]></url>
+				<updateStatus>{$vo.status}</updateStatus>
+				<trialStatus>免费</trialStatus>
+				<keywords>{$vo.title}</keywords>
+				<totalClick>{$vo.views}</totalClick>
+				<newestChapter>
+					<headline>{$vo.lastchapter}</headline>
+					<url><![CDATA[{:C('NOWHOST')}{$vo.lastchapterurl}]]></url>
+					<dateModified>{$vo.updatetime}</dateModified>
+				</newestChapter>
+				<dateModified>{$vo.updatetime}</dateModified>
+			</data>
+		</url></foreach>
+
+	</urlset>
+<else />
+<?xml version="1.0" encoding="utf-8"?>
+	<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		<foreach name="sitemapdata['maplist']" key="key" item="vo">
+		<sitemap>
+			<loc><![CDATA[{:C('NOWHOST')}{$vo.listurl}]]></loc>
+			<lastmod>{$sitemapdata.dateline}</lastmod>
+		</sitemap>
+		</foreach>
+
+	</sitemapindex>
+</if>

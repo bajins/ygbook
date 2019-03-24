@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$TDK.title}</title>
+<meta name="keywords" content="{$TDK.keyword}" />
+<meta name="description" content="{$TDK.description}" />
+<link rel="canonical" href="{$TDK.canonicalurl}"/>
+<link rel="shortcut icon" href="/favicon.ico">
+<meta name="applicable-device" content="pc">
+<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+<link href="__PUBLIC__/{$theme}/css/base.css?v{$version}" rel="stylesheet">
+<link href="__PUBLIC__/{$theme}/css/book.css?v{$version}" rel="stylesheet">
+<script src="__PUBLIC__/{$theme}/js/base.js?v{$version}" type="text/javascript"></script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div class="container">
+		<div class="inner">
+			<div class="title"><span class="label"></span><em><a href="{$TDK.canonicalurl}" title="{$TDK.catename}">{$TDK.catename}</a>小说月榜</em></div>
+			<div class="details cf">
+				<foreach name="hotlist" item="v">
+				<div class="item-img">
+				<a href="{$v['rewriteurl']}" title="{$v['title']}"><img {$comset.src}="{$v['thumb']}" alt="{$v['title']}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+				<h5><a href="{$v['rewriteurl']}" title="{$v['title']}">{$v['title']}</a></h5>
+				作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a>
+				<p>{$v['description']}......</p>
+				</div>
+				</foreach>
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.list_1.code}</div>
+	<div class="container">
+		<div class="list_center">
+			<div class="title">
+				<span class="label"></span><em>{$TDK.catename}小说大全</em>
+			</div>
+			<div id="sitebox" class="cf">
+				<foreach name="articlelist" item="v">
+				<dl>
+					<dt><a href="{$v.rewriteurl}" target="_blank"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" height="155" width="120" onerror="this.src='__PUBLIC__/images/nocover.jpg'"></a></dt>
+					<dd><h3><span class="uptime">{$v.updatetime}</span><a href="{$v.rewriteurl}" target="_blank">{$v.title}</a></h3></dd>
+					<dd class="book_other">作者：<span><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>状态：<span>{$v.status}</span>类别：<span><a href="{$v.cateurl}">{$v.catename}</a></span></dd>
+					<dd class="book_des"><span>简介：</span>{$v.description}......<a href="{$v.rewriteurl}" target="_blank">[详细]</a></dd>
+					<dd class="book_other">最新章节：<a href="{$v.lastchapterurl}" target="_blank">{$v.lastchapter}</a></dd>
+					<dd class="book_other"></dd>
+				</dl>
+				</foreach>
+			</div>
+			<div class="pages">
+				{$pagehtml}
+			</div>
+		</div>
+	</div>
+	<div class="dvcode">{$advcode.list_2.code}</div>
+	<include file="Public/footer" />
+</div>
+<script src="__PUBLIC__/{$theme}/js/footer.js?v{$version}"></script>
+</body>
+</html>

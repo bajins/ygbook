@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<title>小说搜索_{$TDK.webname}</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/ptm.min.css?v{$version}" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/skin.min.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/{$theme}/css/font-awesome.min.css" />
+</head>
+<body>
+<include file="Public/header" />
+<section class="ptm-content">
+	<include file="Public/nav" />
+	<div class="ptm-card">
+		<div class="searchbox ptm-clearfix">
+<if condition="$comset.znsid neq ''">
+			<form action="http://zhannei.baidu.com/cse/search" name="searchbtm" method="get">
+				<input type="hidden" name="s" value="{$comset.znsid}">
+				<input name="q" placeholder="请输入小说名或作者名，勿错字" type="text" class="searchinput" required><button class="searchbtn ptm-btn-primary" type="submit">搜索</button>
+			</form>
+<else />
+			<form action="{:U('/home/search')}" name="searchinline" method="post">
+				<input type="hidden" name="action" value="search">
+				<input name="q" placeholder="请输入小说名或作者名，勿错字" type="text" class="searchinput" required><button class="searchbtn ptm-btn-primary" type="submit">搜索</button>
+			</form>
+</if>
+		</div>
+	</div>
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			<div class="ptm-pull-left">
+				重磅推荐
+			</div>
+		</div>
+		<div class="ptm-card-content" style="padding:0">
+			<ul class="ptm-list-view ptm-grid-view pt-card-1">
+				<foreach name="dataarea_list.wap_week6" item="v">
+				<li class="ptm-list-view-cell ptm-img ptm-col-xs-4">
+					<div class="imgarea">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img class="ptm-img-object" {$comset.src}="{$v.thumb}" alt="{$title}"></a>
+					</div>
+					<div class="ptm-img-body">
+						<span class="ptm-block pt-name ptm-text-cut"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></span>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	{$advcode.list_1.code_wap}
+	<div class="ptm-card">
+		<div class="ptm-card-header ptm-clearfix">
+			最近更新
+		</div>
+		<div class="ptm-card-content">
+			<ul class="pt-card pt-card-6">
+				<foreach name="dataarea_list.wap_search_last" item="v">
+				<li>
+					<div class="pt-novel">
+						<div class="pt-one">
+							<span class="pt-author">{$v.updatetime} </span>
+							<span class="pt-name"><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></span>
+							<span class="pt-author"> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+						</div>
+						<div class="pt-desc ptm-text-cut "><a href="{$v.rewriteurl}" title="{$v.title} {$v.lastchapter}" target="_blank">{$v.lastchapter}</a></div>
+					</div>
+					<div class="pt-cover">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img src="{$v.thumb}" alt="{$v.title}"></a>
+					</div>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	{$advcode.list_2.code_wap}
+</section>
+<div class="ptm-line-x"></div>
+<include file="Public/footer" />
+</body>
+</html>

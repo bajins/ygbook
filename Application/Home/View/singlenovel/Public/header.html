@@ -1,0 +1,53 @@
+<header id="header">
+	<div id="topbar">
+		<div class="hd">
+			<div class="share">
+				<em>分享"{$TDK.webname}"：</em><script>share();</script>
+			</div>
+			<div class="trans">
+				<a id="translatelink" style="color:red;" href="javascript:translatePage();" title="点击[繁/简]切换">繁体版</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="headbar">
+		<div class="hd">
+			 <div class="logo">
+				<a href="{$TDK.weburl}" title="{$TDK.webname}">{$TDK.webname}</a>
+			</div>
+			<div class="topsearch">
+<if condition="$comset.znsid neq ''">
+				<form action="http://zhannei.baidu.com/cse/search" method="get" target="_blank">
+					<input type="hidden" name="s" value="{$comset.znsid}">
+					<input type="text" name="q" id="searchkey" baidusug="2" placeholder="请您少字也别错字..." required="required" class="search-text" />
+					<input class="search-submit" type="submit" value="搜索" />
+				</form>
+<else />
+				<form action="{:U('/home/search')}" method="post" target="_blank">
+					<input type="hidden" name="action" value="search">
+					<input type="text" name="q" id="searchkey" baidusug="2" placeholder="请您少字也别错字..." required="required" class="search-text" />
+					<input class="search-submit" type="submit" value="搜索" />
+				</form>
+</if>
+			</div>
+			<div id="headbtn">
+				<a href="javascript:;" class="btn_nav"></a>
+				<a href="javascript:;" class="btn_search"></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="container nav">
+		<div class="inner">
+			<ul>
+				<li <if condition="$cate eq ''">class="current"</if>><a href="{$TDK.weburl}" title="{$TDK.webname}">首页</a></li>
+				<li><a href="{:U('/home/index/bookcase')}">书架</a></li>
+				<foreach name="category" key="key" item="vo">
+				<li <if condition="$category[$key]['dir'] eq $cate">class="current"</if>><a href="{$vo.url}">{$vo.name|substr=0,6}</a></li>
+				</foreach>
+				<li <if condition="$cate eq 'all'">class="current"</if>><a href="{$catelist.all}">书库</a></li>
+				<li <if condition="$cate eq 'top'">class="current"</if>><a href="{$catelist.top}">排行</a></li>
+			</ul>
+		</div>
+	</div>
+</header>

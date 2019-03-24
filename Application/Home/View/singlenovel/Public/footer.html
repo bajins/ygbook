@@ -1,0 +1,15 @@
+<div id="footer">
+	<div class="hd">
+		Copyright &copy; <a href="{$TDK.weburl}" rel="index">{$TDK.webname}</a> 提供天蚕土豆《天尊》小说全文在线阅读 {$statcode}
+	</div>
+</div>
+<script>backtotop();</script>
+<if condition="$comset.src neq 'src'">
+<script src="__PUBLIC__/{$theme}/js/jquery.lazyload.min.js?v{$version}"></script>
+<script>
+$(function() {
+	$('[rel-class=lazyload]').lazyload({effect: "fadeIn"});
+});
+</script>
+</if>
+{$advcode.global_footer.code}

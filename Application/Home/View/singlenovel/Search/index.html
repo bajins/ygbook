@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>小说搜索_{$TDK.webname}</title>
+	<link rel="canonical" href="{$TDK.weburl}"/>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" media="screen and (max-width:600px)" href="__PUBLIC__/{$theme}/css/mobile.css" type="text/css" />
+	<script src="__PUBLIC__/{$theme}/js/jquery2.1.4.min.js?v{$version}"></script>
+	<script src="__PUBLIC__/{$theme}/js/user.js"></script>
+</head>
+<body>
+<include file="Public/header" />
+<div class="container">
+	<div class="inner">
+		<div class="title">小说搜索</div>
+		<div class="inner searchbox cf">
+			<form action="{:U('/home/search')}" method="post">
+			<input type="hidden" name="action" value="search">
+			<input name="q" placeholder="请输入小说名或作者名，勿错字" type="text" class="searchinput" required>
+			<button class="searchbtn" type="submit">搜索</button>
+			</form>
+		</div>
+	</div>
+</div>
+<include file="Public/footer" />
+</body>
+</html>

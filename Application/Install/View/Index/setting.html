@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<link href="__PUBLIC__/install/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="wrapper">
+	<div class="logo"><a href="#" target="_blank"><img src="__PUBLIC__/install/logo.png" /></a></div>
+	<div class="setting">
+		<div id="cue"></div>
+		<form id="install" action="{:U('index/install')}" method="post">
+			<ul>
+				<h3>数据库账号</h3>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="120"><strong>主机：</strong></td>
+					<td width="225">
+						<input type="text" name="dbhost" class="textInput" value="localhost" required="true" />
+					</td>
+					<td>一般为localhost</td>
+				</tr>
+				<tr>
+					<td width="120"><strong>端口：</strong></td>
+					<td width="225">
+						<input type="text" name="dbport" class="textInput" value="3306" required="true" />
+					</td>
+					<td>一般为3306</td>
+				</tr>
+				<tr>
+					<td><strong>用户名：</strong></td>
+					<td>
+						<input name="dbuser" type="text" class="textInput" required="true" />
+					</td>
+					<td>您的MySQL用户名</td>
+				</tr>
+				<tr>
+					<td><strong>密码：</strong></td>
+					<td>
+						<input type="password" name="dbpass" class="textInput" required="true" />
+					</td>
+					<td>MySQL密码</td>
+				</tr>
+				<tr>
+					<td><strong>数据库名：</strong></td>
+					<td>
+						<input name="dbname" type="text" class="textInput" required="true" />
+					</td>
+					<td>将YGBOOK安装到哪个数据库？请先创建数据库</td>
+				</tr>
+				<tr>
+					<td><strong>数据表前缀：</strong></td>
+					<td>
+						<input type="text" name="prefix" class="textInput" value="yg_" required="true" />
+					</td>
+					<td>如果您希望在同一个数据库安装多个YGBOOK，请修改前缀。</td>
+				</tr>
+				</table>
+				<h3>后台管理员帐号</h3>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="120"><strong>管理员用户名：</strong></td>
+					<td width="225">
+						<input name="username" type="text" class="textInput" value="admin" required="true" />
+					</td>
+					<td>用户名至少包含4个字符，需以字母开头。</td>
+				</tr>
+				<tr>
+					<td><strong>登录密码：</strong></td>
+					<td>
+						<input type="password" name="password" class="textInput" required="true" />
+					</td>
+					<td>密码至少包含6个字符。可使用字母，数字和符号。</td>
+				</tr>
+				<tr>
+					<td><strong>重复登录密码：</strong></td>
+					<td>
+						<input type="password" name="password_confirm" class="textInput" required="true" />
+					</td>
+					<td>请再次输入登录密码</td>
+				</tr>
+				</table>
+			</ul>
+			<p class="action">
+				<input type="button" class="btnGray" value="后退" onclick="location.href='{:U('index/check')}'"/>
+				<input type="submit" class="btn" value="开始安装">
+			</p>
+		</form>
+	</div>
+</div>
+</body>
+</html>

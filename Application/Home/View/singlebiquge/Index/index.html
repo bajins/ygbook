@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<title>{$TDK.title}</title>
+	<meta name="keywords" content="{$TDK.keyword}" />
+	<meta name="description" content="{$TDK.description}" />
+	<link rel="canonical" href="{$TDK.weburl}"/>
+	<meta name="applicable-device" content="pc">
+	<meta http-equiv="mobile-agent" content="format=html5; url={$TDK.canonicalurl_m}">
+	<link rel="stylesheet" href="__PUBLIC__/{$theme}/css/style.css?v{$version}" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/{$theme}/js/header.js?v{$version}"></script>
+	<script>var znsid = '{$comset.znsid}';</script>
+</head>
+<body>
+<div id="wrapper">
+	<include file="Public/header" />
+	<div id="main">
+		<div id="hotcontent">
+			<div class="l">
+				<foreach name="dataarea_list.pc_index_fengtui" item="v">
+				<div class="fengtuibox">
+					<div id="fengtui">
+						<div class="ftimg">
+							<a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" width="120" height="150" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+						</div>
+						<div class="ftinfo">
+							<h1 title="{$v.title}">{$v.title}</h1>
+							<p>作者：<a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></p>
+							<p>类型：{$v.articledb.catename}</p>
+							<p>人气：{$v.articledb.views}</p>
+							<p>最后更新：{$v.articledb.time}</p>
+							<p class="lastchapter">最新章节：<a href="{:reurl('chapter', array( 'id' => $v['articledb']['id'], 'cate' => $v['articledb']['cate'], 'cid' => $v['articledb']['lastcid']))}" target="_blank" title="{$v.title}最新章节">{$v.articledb.lastchapter}</a></p>
+						</div>
+						<div class="ftintro">
+							<p>{$v.articledb.content}</p>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="ftlist">
+						<h3>{$v.title}最新章节（{$v.title}最新十五章）</h3>
+						<ul>
+							<foreach name="v.newchapter" item="v2">
+							<li><a href="{:reurl('chapter', $v2, $maindomain)}" target="_blank" title="{$v.title} {$v2.title}">{$v2.title}</a></li>
+							</foreach>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+			</div>
+			<div class="r">
+				<h2>
+					人气小说榜
+				</h2>
+				<ul>
+					<foreach name="dataarea_list.pc_index_jingdian" item="v">
+					<li>
+						<span class="s1">[{$v.catename_short}]</span>
+						<span class="s2"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></span>
+						<span class="s5"><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{$advcode.index_1.code}
+		<div id="scrollbook">
+			<div class="scrolllist">
+				<ul>
+				<foreach name="dataarea_list.pc_index_scroll" item="v">
+					<li>
+					<div class="scroll-item">
+						<a href="{$v.rewriteurl}" title="{$v.title}"><img {$comset.src}="{$v.thumb}" alt="{$v.title}" onerror="this.src='__PUBLIC__/images/nocover.jpg'" /></a>
+						<h5><a href="{$v.rewriteurl}" title="{$v.title}">{$v.title}</a></h5>
+					</div>
+					</li>
+				</foreach>
+				<div class="clear"></div>
+				</ul>
+			</div>
+			<div class="btns"><a href="javascript:;" class="up"></a><a href="javascript:;" class="down"></a></div>
+		</div>
+		<div id="novelslist1" class="novelslist">
+			<div class="content">
+				<h2>{:getcate('xuanhuan')}</h2>
+				<foreach name="dataarea_list.pc_index_xuanhuan2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_xuanhuan" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="content">
+				<h2>{:getcate('xiuzhen')}</h2>
+				<foreach name="dataarea_list.pc_index_xiuzhen2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_xiuzhen" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="content border">
+				<h2>{:getcate('dushi')}</h2>
+				<foreach name="dataarea_list.pc_index_dushi2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_dushi" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		{$advcode.index_2.code}
+		<div id="novelslist2" class="novelslist">
+			<div class="content">
+				<h2>{:getcate('lishi')}</h2>
+				<foreach name="dataarea_list.pc_index_chuanyue2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_chuanyue" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="content">
+				<h2>{:getcate('wangyou')}</h2>
+				<foreach name="dataarea_list.pc_index_wangyou2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_wangyou" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="content border">
+				<h2>{:getcate('kehuan')}</h2>
+				<foreach name="dataarea_list.pc_index_kehuan2" item="v">
+				<div class="top">
+					<div class="image"><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}"><img src="{$v.thumb}" alt="{$v.title}" width="67" height="82" /></a></div>
+					<dl>
+						<dt><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a></dt>
+						<dd>{$v.description}...</dd>
+					</dl>
+					<div class="clear"></div>
+				</div>
+				</foreach>
+				<ul class="cf">
+					<foreach name="dataarea_list.pc_index_kehuan" item="v">
+					<li><a href="{$v.rewriteurl}" title="{$TDK.webname} {$v.title}">{$v.title}</a> / <a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+		<div id="newscontent">
+			<div class="l">
+				<h2>
+					最近更新小说列表
+				</h2>
+				<ul>
+					<foreach name="updatelist" item="v">
+					<li>
+						<span class="s1">[<a href="{$v['cateurl']}" title="{$TDK.webname} {$v['catename']}">{$v['catename']}</a>]</span>
+						<span class="s2"><a href="{$v['rewriteurl']}" title="{$TDK.webname} {$v['title']}">{$v['title']}</a></span>
+						<span class="s3"><a href="{$v['lastchapterurl']}" title="{$v['title']}最新章节" target="_blank">{$v['lastchapter']}</a></span>
+						<span class="s4"><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+						<span class="s5">{$v['updatetime']}</span>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="r">
+				<h2>
+					最新入库小说
+				</h2>
+				<ul>
+					<assign name="i" value="0" />
+					<foreach name="newestlist" item="v">
+					<assign name="i" value="$i+1" />
+					<li>
+						<span class="s1">[<a href="{$v['cateurl']}" title="{$TDK.webname} {$v['catename']}">{$v['catename_short']}</a>]</span>
+						<span class="s2"><a href="{$v['rewriteurl']}" title="{$TDK.webname} {$v['title']}">{$v['title']}</a></span>
+						<span class="s5"><a href="{:reurl('author', $v)}" target="_blank" title="{$v.author}">{$v.author}</a></span>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+		{$advcode.index_3.code}
+	</div>
+	<div id="firendlink">
+		友情连接：<foreach name="TDK.flink" item="v3"><a href="{$v3['url']}" target="_blank">{$v3['name']}</a></foreach>
+	</div>
+	<include file="Public/footer" />
+</div>
+</body>
+</html>

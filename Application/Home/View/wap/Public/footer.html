@@ -1,0 +1,37 @@
+<div class="footer">
+    <p>本站系基于互联网搜索引擎技术为您提供信息检索服务。</p>
+    <p>Copyright ©
+        <script>
+            document.write(new Date().getFullYear())
+        </script> {$statcode}</p>
+</div>
+<section class="ptm-bar ptm-fix ptm-search">
+    <div class="searchbox ptm-clearfix">
+        <if condition="$comset.znsid neq ''">
+            <form action="http://zhannei.baidu.com/cse/search" name="searchbtm" method="get">
+                <input type="hidden" name="s" value="{$comset.znsid}">
+                <input name="q" placeholder="请输入小说名或作者名，勿错字" type="text" class="searchinput" required><button class="searchbtn ptm-btn-primary" type="submit">搜索</button>
+            </form>
+            <else />
+            <form action="{:U('/home/search')}" name="searchbtm" method="post">
+                <input type="hidden" name="action" value="search">
+                <input name="q" placeholder="请输入小说名或作者名，勿错字" type="text" class="searchinput" required><button class="searchbtn ptm-btn-primary" type="submit">搜索</button>
+            </form>
+        </if>
+    </div>
+</section>
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/zepto.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/{$theme}/js/base.js?v{$version}"></script>
+<script type="text/javascript" src="__PUBLIC__/trans.js?v{$version}"></script>
+<if condition="$comset.src neq 'src'">
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+    <script>
+        $(function() {
+            jQuery('[rel-class=lazyload]').lazyload({
+                effect: "fadeIn"
+            });
+        });
+    </script>
+</if>
+{$advcode.global_footer.code_wap}
